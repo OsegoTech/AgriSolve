@@ -14,14 +14,14 @@ export default function HomeNav() {
         priority
       />
 
-      <ul className='flex space-x-4 text-xs'>
+      <ul className='flex space-x-4 text-sm'>
         <li>Marketplace</li>
         <li>Explore</li>
         <li>Forecasts</li>
       </ul>
 
       <ul className='flex space-x-4 text-sm'>
-        <PrimaryButton onClick={() => {}} className='text-xs rounded-[4px] py-3 px-4'>Log in</PrimaryButton>
+        <PrimaryButton variant='outline' onClick={() => {}} className='text-xs rounded-[4px] py-3 px-4'>Log in</PrimaryButton>
         <PrimaryButton onClick={() => {}} className='text-xs rounded-[4px] py-3 px-4'>Sign up</PrimaryButton>
       </ul>
     </nav>
