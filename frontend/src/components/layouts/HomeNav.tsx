@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import PrimaryButton from '../buttons/PrimaryButton'
 
 export default function HomeNav() {
   return (
@@ -20,8 +21,8 @@ export default function HomeNav() {
       </ul>
 
       <ul className='flex space-x-4 text-sm'>
-        <li>Log in</li>
-        <li>Sign up</li>
+        <PrimaryButton onClick={() => {}} className='text-xs rounded-[4px] py-3 px-4'>Log in</PrimaryButton>
+        <PrimaryButton onClick={() => {}} className='text-xs rounded-[4px] py-3 px-4'>Sign up</PrimaryButton>
       </ul>
     </nav>
   )
