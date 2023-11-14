@@ -74,7 +74,7 @@ POST /api/v1/forecast
 - Install requirements (`pip install -r requirements.txt`)
 - Set `.env` variables for the different API keys
 - Run `python app.py`
-- The API will be live on `http://localhost:5000` 
+- The API will be live on `https://agri-solve-microservice.vercel.app` 
 
 ## Built With
 

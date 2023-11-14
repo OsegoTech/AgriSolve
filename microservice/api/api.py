@@ -16,8 +16,7 @@ from dotenv import load_dotenv
 import os 
 
 #SCRAPPING LOGIC
-import asyncio
-import httpx
+import requests
 from bs4 import BeautifulSoup
 from lxml import html
 
@@ -88,9 +87,8 @@ def detect_crop():
 
 #pest detection route
 #scrape pest details
-async def scrape(url):
-  async with httpx.AsyncClient() as client:
-    resp = await client.get(url)
+def scrape(url):
+    resp = requests.get(url)
     soup = BeautifulSoup(resp.text, 'html.parser')
 
     tree = html.fromstring(str(soup))
@@ -128,7 +126,7 @@ def pest_identification():
         return {
                 "name":pest_name,
                 "common_name":pest_common_name,
-                "description":f"{asyncio.run(scrape(pest_description_url))}",
+                "description":f"{scrape(pest_description_url)}",
                 "description_url":pest_description_url
                 }
 
