@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-toast": "^1.1.5",
     "@reduxjs/toolkit": "^1.9.7",
     "apexcharts": "^3.44.0",
