@@ -1,0 +1,8 @@
+Flask == 3.0.0
+Flask-Cors == 4.0.0
+python-dotenv == 1.0.0
+requests == 2.31.0
+asyncio == 3.4.3
+httpx == 0.23.1
+bs4 == 0.0.1
+lxml == 4.9.1
