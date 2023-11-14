@@ -39,4 +39,4 @@ def detect_crop():
             return {"name": suggestion["name"],  # water deficiency
                     "suggestions":suggestion["disease_details"]["description"]}    # Water deficiency is...
 
-print(detect_crop())
+print(detect_pest_disease())

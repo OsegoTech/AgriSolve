@@ -13,6 +13,7 @@ from flask import Flask,request
 from flask_cors import cross_origin, CORS
 import requests
 from dotenv import load_dotenv
+import os 
 
 #SCRAPPING LOGIC
 import asyncio
@@ -78,7 +79,7 @@ def pest_identification():
     },
         headers={
         "Content-Type": "application/json",
-        "Api-Key": "dhnqaFrEfd0XqZvXdcVbO9GFDQAgnNvPcxvi8AVZAbncp6paSu",
+        "Api-Key": f"{os.getenv('PEST_API')}",
     }).json()
     #if response.status_code != 200:
      #   return {"message":f"Error <{response.status_code}> while perfoming the specified operation"}
