@@ -58,4 +58,4 @@ def detect_crop_detailed():
     url = "http://127.0.0.1:5000/api/v1/crop-disease-detection/detailed"
     resp = requests.post(url,json={'image':base64_string}).json()
     return resp
-print(detect_crop_detailed())
+print(detect_pest_disease())

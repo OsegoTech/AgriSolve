@@ -49,6 +49,7 @@ def crop_disease_detector():
         msg = {"message":f"Error <{r.status_code}> in processing the image"}
 
     return msg
+
 #crop detection route 2 (detailed)
 @app.post('/api/v1/crop-disease-detection/detailed')
 @cross_origin()
@@ -86,6 +87,7 @@ def detect_crop():
         return {"diseases":diseases}
 
 #pest detection route
+#scrape pest details
 async def scrape(url):
   async with httpx.AsyncClient() as client:
     resp = await client.get(url)
@@ -94,7 +96,7 @@ async def scrape(url):
     tree = html.fromstring(str(soup))
 
     # Find p tag by xpath 
-    p = tree.xpath('/html/body/div[2]/div/div[3]/main/div[3]/div[3]/div[1]/p[3]')[0]
+    p = tree.xpath('//*[@id="mw-content-text"]/div[1]/p[2]')[0]
 
     return p.text_content()
 
@@ -116,6 +118,7 @@ def pest_identification():
         "Content-Type": "application/json",
         "Api-Key": f"{os.getenv('PEST_API')}",
     }).json()
+    print(response)
     #if response.status_code != 200:
      #   return {"message":f"Error <{response.status_code}> while perfoming the specified operation"}
     for suggestion in response["result"]["classification"]["suggestions"]:
