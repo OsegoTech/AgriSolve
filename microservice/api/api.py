@@ -49,8 +49,43 @@ def crop_disease_detector():
         msg = {"message":f"Error <{r.status_code}> in processing the image"}
 
     return msg
-#pest detection route
+#crop detection route 2 (detailed)
+@app.post('/api/v1/crop-disease-detection/detailed')
+@cross_origin()
+def detect_crop():
+    image = request.get_json()['image']
+    response = requests.post(
+    "https://api.plant.id/v2/health_assessment",
+    json={
+        "images": f"{image}",
+        "modifiers": ["similar_images"],
+        "disease_details": ["description", "treatment"],
+    },
+    headers={
+        "Content-Type": "application/json",
+        "Api-Key": f"{os.getenv('PLANT_API')}",
+    }).json()
 
+    if not response["health_assessment"]["is_healthy"]:
+        diseases = []
+        for suggestion in response["health_assessment"]["diseases"]:
+            
+            treatment_categories= suggestion['disease_details']['treatment']
+            
+            treatment = {}
+            for category in treatment_categories:
+                treatment_detail = "".join(treatment_categories[f'{category}'])
+                treatment |= {category:treatment_detail}
+
+            disease = {"name": suggestion["name"],
+                       "probability":suggestion['probability'],
+                    "suggestions":suggestion["disease_details"]["description"],
+                    "treatment":treatment}
+            
+            diseases.append(disease)
+        return {"diseases":diseases}
+
+#pest detection route
 async def scrape(url):
   async with httpx.AsyncClient() as client:
     resp = await client.get(url)

@@ -36,10 +36,26 @@ def detect_crop():
         "Content-Type": "application/json",
         "Api-Key": f"{os.getenv('PLANT_API')}",
     }).json()
-    
     if not response["health_assessment"]["is_healthy"]:
+        diseases = []
         for suggestion in response["health_assessment"]["diseases"]:
-            return {"name": suggestion["name"],  # water deficiency
-                    "suggestions":suggestion["disease_details"]["description"]}    # Water deficiency is...
+            
+            treatment_categories= suggestion['disease_details']['treatment']
+            
+            treatment = {}
+            for category in treatment_categories:
+                treatment_detail = "".join(treatment_categories[f'{category}'])
+                treatment |= {category:treatment_detail}
 
-print(detect_pest_disease())
+            disease = {"name": suggestion["name"],
+                       "probability":suggestion['probability'],
+                    "suggestions":suggestion["disease_details"]["description"],
+                    "treatment":treatment}
+            
+            diseases.append(disease)
+        return {"diseases":diseases}
+def detect_crop_detailed():
+    url = "http://127.0.0.1:5000/api/v1/crop-disease-detection/detailed"
+    resp = requests.post(url,json={'image':base64_string}).json()
+    return resp
+print(detect_crop_detailed())
