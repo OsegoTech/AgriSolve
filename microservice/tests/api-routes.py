@@ -1,6 +1,9 @@
 import base64
 import requests 
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 url = input("Enter image url: ")
 
@@ -31,7 +34,7 @@ def detect_crop():
     },
     headers={
         "Content-Type": "application/json",
-        "Api-Key": "3Edi1TohvXjMh10KuzWVVGYUt4Bbp3VFtPgeN3ij9Oeg8YLxmo",
+        "Api-Key": f"{os.getenv('PLANT_API')}",
     }).json()
     
     if not response["health_assessment"]["is_healthy"]:
