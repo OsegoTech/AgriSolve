@@ -49,6 +49,7 @@ def crop_disease_detector():
         msg = {"message":f"Error <{r.status_code}> in processing the image"}
 
     return msg
+
 #crop detection route 2 (detailed)
 @app.post('/api/v1/crop-disease-detection/detailed')
 @cross_origin()
@@ -86,6 +87,7 @@ def detect_crop():
         return {"diseases":diseases}
 
 #pest detection route
+#scrape pest details
 async def scrape(url):
   async with httpx.AsyncClient() as client:
     resp = await client.get(url)
@@ -94,7 +96,7 @@ async def scrape(url):
     tree = html.fromstring(str(soup))
 
     # Find p tag by xpath 
-    p = tree.xpath('/html/body/div[2]/div/div[3]/main/div[3]/div[3]/div[1]/p[3]')[0]
+    p = tree.xpath('//*[@id="mw-content-text"]/div[1]/p[2]')[0]
 
     return p.text_content()
 
@@ -116,6 +118,7 @@ def pest_identification():
         "Content-Type": "application/json",
         "Api-Key": f"{os.getenv('PEST_API')}",
     }).json()
+    print(response)
     #if response.status_code != 200:
      #   return {"message":f"Error <{response.status_code}> while perfoming the specified operation"}
     for suggestion in response["result"]["classification"]["suggestions"]:
@@ -128,5 +131,57 @@ def pest_identification():
                 "description":f"{asyncio.run(scrape(pest_description_url))}",
                 "description_url":pest_description_url
                 }
+
+#weather-detection route
+#current_weather
+@app.post("/api/v1/current_weather")
+@cross_origin()
+def get_weather_data():
+    data:dict = request.get_json()
+    lat_long = f"{data['latitude']},{data['longitude']}"
+    weather_url = "http://api.weatherapi.com/v1/current.json?key={}&q={}".format(os.getenv('WEATHER_API'),lat_long)
+    if(lat_long):
+        data = requests.get(weather_url).json()
+        to_return = {
+        "weather":{
+        "is_day":data['current']['is_day'],
+        "text":data['current']['condition']['text'],
+        "icon":f"https://news-feed-ke.vercel.app/proxy-image?url=https:{data['current']['condition']['icon']}",
+        "temp":data['current']['feelslike_c']
+            }
+            }
+        return to_return
+    else:
+        return {'ERROR':'{latitiude,longitude} is required'}
+
+#forecast
+@app.post('/api/v1/forecast')
+@cross_origin()
+def get_forecast_data():
+    data:dict = request.get_json()
+    lat_long = f"{data['latitude']},{data['longitude']}"
+    weather_url = "https://api.weatherapi.com/v1/forecast.json?key={}&q={}&days=7&aqi=yes&alerts=yes".format(os.getenv('WEATHER_API'),lat_long)
+    if(lat_long):
+        data = requests.get(weather_url).json()
+        forecasts = []
+        for day in data['forecast']['forecastday']:
+            date = day['date']
+            max_temp = day['day']['maxtemp_c']
+            min_temp = day['day']['mintemp_c']
+            conditions = day['day']['condition']['text']
+            icon = day['day']['condition']['icon']
+            rain_chance = day['day']['daily_chance_of_rain']
+    
+            daily_forecast = {"date":date,"temperature":{"High": f"{max_temp}C", "Low": f"{min_temp}C"}, "condition":conditions, "icon":f"https://news-feed-ke.vercel.app/proxy-image?url=https:{icon}", "rain_chance": f"{rain_chance}%"}
+            forecasts.append(daily_forecast)
+        to_return = {
+                "forecast":forecasts
+                }
+        return to_return
+    else:
+        return {'ERROR':'{latitude ,longitude} is required'}
+
+#messages on alerts
+
 if __name__ == "__main__":
     app.run(debug = True, port=5000)
