@@ -131,5 +131,57 @@ def pest_identification():
                 "description":f"{asyncio.run(scrape(pest_description_url))}",
                 "description_url":pest_description_url
                 }
+
+#weather-detection route
+#current_weather
+@app.post("/api/v1/current_weather")
+@cross_origin()
+def get_weather_data():
+    data:dict = request.get_json()
+    lat_long = f"{data['latitude']},{data['longitude']}"
+    weather_url = "http://api.weatherapi.com/v1/current.json?key={}&q={}".format(os.getenv('WEATHER_API'),lat_long)
+    if(lat_long):
+        data = requests.get(weather_url).json()
+        to_return = {
+        "weather":{
+        "is_day":data['current']['is_day'],
+        "text":data['current']['condition']['text'],
+        "icon":f"https://news-feed-ke.vercel.app/proxy-image?url=https:{data['current']['condition']['icon']}",
+        "temp":data['current']['feelslike_c']
+            }
+            }
+        return to_return
+    else:
+        return {'ERROR':'{latitiude,longitude} is required'}
+
+#forecast
+@app.post('/api/v1/forecast')
+@cross_origin()
+def get_forecast_data():
+    data:dict = request.get_json()
+    lat_long = f"{data['latitude']},{data['longitude']}"
+    weather_url = "https://api.weatherapi.com/v1/forecast.json?key={}&q={}&days=7&aqi=yes&alerts=yes".format(os.getenv('WEATHER_API'),lat_long)
+    if(lat_long):
+        data = requests.get(weather_url).json()
+        forecasts = []
+        for day in data['forecast']['forecastday']:
+            date = day['date']
+            max_temp = day['day']['maxtemp_c']
+            min_temp = day['day']['mintemp_c']
+            conditions = day['day']['condition']['text']
+            icon = day['day']['condition']['icon']
+            rain_chance = day['day']['daily_chance_of_rain']
+    
+            daily_forecast = {"date":date,"temperature":{"High": f"{max_temp}C", "Low": f"{min_temp}C"}, "condition":conditions, "icon":f"https://news-feed-ke.vercel.app/proxy-image?url=https:{icon}", "rain_chance": f"{rain_chance}%"}
+            forecasts.append(daily_forecast)
+        to_return = {
+                "forecast":forecasts
+                }
+        return to_return
+    else:
+        return {'ERROR':'{latitude ,longitude} is required'}
+
+#messages on alerts
+
 if __name__ == "__main__":
     app.run(debug = True, port=5000)

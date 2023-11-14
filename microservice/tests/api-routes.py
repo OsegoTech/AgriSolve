@@ -4,14 +4,12 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-
-url = input("Enter image url: ")
-
-response = requests.get(url)
-image_bytes = response.content
-
-base64_bytes = base64.b64encode(image_bytes)
-base64_string = base64_bytes.decode('utf-8') 
+def image_to_base64():
+    url = input("Enter image url: ")
+    response = requests.get(url)
+    image_bytes = response.content
+    base64_bytes = base64.b64encode(image_bytes)
+    base64_string = base64_bytes.decode('utf-8') 
 
 
 def detect_crop_disease():
@@ -58,4 +56,14 @@ def detect_crop_detailed():
     url = "http://127.0.0.1:5000/api/v1/crop-disease-detection/detailed"
     resp = requests.post(url,json={'image':base64_string}).json()
     return resp
-print(detect_pest_disease())
+
+def weather_current():
+    url = "http://127.0.0.1:5000/api/v1/current_weather"
+    resp = requests.post(url,json={'latitude':53.7,'longitude':28.3}).json()
+    return resp
+
+def weather_forecast():
+    url = "http://127.0.0.1:5000/api/v1/forecast"
+    resp = requests.post(url,json={'latitude':53.7,'longitude':28.3}).text
+    return resp 
+
