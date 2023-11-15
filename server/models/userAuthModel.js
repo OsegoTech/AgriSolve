@@ -13,11 +13,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: String
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
+   
     location: {
         type: String,
         required: true
