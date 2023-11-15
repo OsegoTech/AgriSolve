@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import Link from 'next/link'
 
 export function SignUpDialog() {
   return (
@@ -43,21 +44,36 @@ export function SignUpDialog() {
             <Label htmlFor='email' className='text-right'>
               Email
             </Label>
-            <Input type='email' id='email' placeholder='Email' className='col-span-3' />
+            <Input
+              type='email'
+              id='email'
+              placeholder='Email'
+              className='col-span-3'
+            />
           </div>
 
           <div className='grid grid-cols-4 items-center gap-4'>
             <Label htmlFor='password' className='text-right'>
               Password
             </Label>
-            <Input id='password' type='password' placeholder='Password' className='col-span-3' />
+            <Input
+              id='password'
+              type='password'
+              placeholder='Password'
+              className='col-span-3'
+            />
           </div>
 
           <div className='grid grid-cols-4 items-center gap-4'>
             <Label htmlFor='confirmPassword' className='text-right'>
               Password
             </Label>
-            <Input id='confirmPassword' type='password' placeholder='Confirm Password' className='col-span-3' />
+            <Input
+              id='confirmPassword'
+              type='password'
+              placeholder='Confirm Password'
+              className='col-span-3'
+            />
           </div>
         </div>
 
@@ -67,6 +83,23 @@ export function SignUpDialog() {
           </Button>
         </DialogFooter>
 
+        <p className='px-8 text-center text-sm text-muted-foreground'>
+          By clicking Sign Up, you agree to our{' '}
+          <Link
+            href='#'
+            className='underline underline-offset-4 hover:text-primary'
+          >
+            Terms of Service
+          </Link>{' '}
+          and{' '}
+          <Link
+            href='#'
+            className='underline underline-offset-4 hover:text-primary'
+          >
+            Privacy Policy
+          </Link>
+          .
+        </p>
       </DialogContent>
     </Dialog>
   )
