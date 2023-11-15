@@ -6,7 +6,7 @@ import { SignUpDialog } from '../logins/Signup'
 export default function HomeNav() {
   const { toast } = useToast()
   return (
-    <nav className='sticky top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-8'>
+    <nav className='sticky z-50 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-8'>
       <Image
         draggable={false}
         src='/leaf_logo.svg'

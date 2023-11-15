@@ -84,7 +84,7 @@ export function SignUpDialog() {
         </DialogFooter>
 
         <p className='px-8 text-center text-sm text-muted-foreground'>
-          By clicking continue, you agree to our{' '}
+          By clicking Sign Up, you agree to our{' '}
           <Link
             href='#'
             className='underline underline-offset-4 hover:text-primary'
