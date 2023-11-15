@@ -23,7 +23,7 @@ export default function Home() {
           many more.
         </h4>
 
-        <div className='space-x-4'>
+        <div className='space-y-4 md:space-x-4'>
           <Link href='/login' className={cn(buttonVariants({ size: 'lg' }))}>
             Get Started
           </Link>
@@ -39,13 +39,13 @@ export default function Home() {
       </div>
 
       <div className='mt-8'>
-        <div className='w-[65%] mx-auto space-y-8 p-3'>
+        <div className='md:w-[65%] mx-auto space-y-8 p-3'>
           <div className='flex items-center justify-center space-x-2 cursor-pointer select-none hover:opacity-70'>
             <p className='text-start font-semibold'>Continue to marketplace</p>
             <MdOutlineKeyboardDoubleArrowRight size={19} />
           </div>
 
-          <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+          <div className='grid place-items-center gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             <ProductCard />
 
             <ProductCard />

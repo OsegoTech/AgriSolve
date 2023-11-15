@@ -1,5 +1,6 @@
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FaArrowRightLong } from 'react-icons/fa6'
 
 export function ProductCard() {
@@ -29,9 +30,11 @@ export function ProductCard() {
         </div>
       </CardContent>
 
-      <CardFooter className='flex items-center space-x-4 pb-4 p-3'>
+      <CardFooter className='p-3 pt-0' >
+      <Link href='#' className='flex items-center justify-start space-x-4 transition-all duration-300 hover:opacity-80 active:opacity-100'>
         <p className='text-sm'>View product</p>
         <FaArrowRightLong className='text-gray-700' />
+        </Link>
       </CardFooter>
     </Card>
   )
