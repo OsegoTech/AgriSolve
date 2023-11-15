@@ -1,7 +1,10 @@
 import Image from 'next/image'
-import { MdOutlineShoppingCart } from "react-icons/md";
+import { MdOutlineShoppingCart } from 'react-icons/md'
 import { ThemeToggle } from '../buttons/ThemeToogle'
-import { Button } from '../ui/button';
+import { Button } from '../ui/button'
+import Link from 'next/link'
+import CategoriesHoverCard from '../cards/hover_cards/CategoriesHoverCard'
+import { CartSheet } from '../modals/CartSheet'
 
 export const ShopNav = () => {
   return (
@@ -17,8 +20,33 @@ export const ShopNav = () => {
           priority
         />
 
+        <ul className='flex flex-col md:flex-row items-center space-x-4 text-sm'>
+          <Link
+            href='/'
+            className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'
+          >
+            Home
+          </Link>
+
+          <CategoriesHoverCard />
+
+          <li className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'>
+            About
+          </li>
+
+          <li className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'>
+            Terms
+          </li>
+        </ul>
+
         <ul className='flex space-x-2 text-sm'>
-        <Button><MdOutlineShoppingCart/></Button>
+          <CartSheet
+            button={
+              <Button className='p-3'>
+                <MdOutlineShoppingCart size={20} />
+              </Button>
+            }
+          />
           <ThemeToggle />
         </ul>
       </nav>
