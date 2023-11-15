@@ -1,8 +1,21 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
+import type { Metadata } from 'next'
+import { Inter as FontSans } from 'next/font/google'
+import localFont from 'next/font/local'
+import { Toaster } from '@/components/ui/toaster'
+import ReduxProvider from '@/store/redux_provider'
+import { cn } from '@/lib/utils'
+import { ThemeProvider } from '@/providers/ThemeProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+const fontSans = FontSans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
+
+const fontHeading = localFont({
+  src: '../assets/fonts/CalSans-SemiBold.woff2',
+  variable: '--font-heading',
+})
 
 export const metadata: Metadata = {
   title: 'Leaf',
@@ -15,8 +28,26 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang='en'>
+      <body
+        className={cn(
+          'font-sans antialiased',
+          fontSans.variable,
+          fontHeading.variable
+        )}
+      >
+        <ReduxProvider>
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </ReduxProvider>
+      </body>
     </html>
   )
 }
