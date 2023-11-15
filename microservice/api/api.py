@@ -14,6 +14,7 @@ from flask_cors import cross_origin, CORS
 import requests
 from dotenv import load_dotenv
 import os 
+from twilio.rest import Client
 
 #SCRAPPING LOGIC
 import requests
@@ -180,6 +181,39 @@ def get_forecast_data():
         return {'ERROR':'{latitude ,longitude} is required'}
 
 #messages on alerts
+@app.post('/api/v1/messaging')
+@cross_origin()
+def notify():
+    """
+    {
+      'phone':+(code)XXXXXXXXX,
+      'message':'test message',
+    }
+    """
+    data = request.get_json()
+    try:
+        phone = data['phone']
+    except KeyError:
+        return {"error":"phone number is required in the format +(code)xxxxxxxxx"}
+    try:
+        message = data['message']
+    except KeyError:
+        message = """
+        Hello, welcome to AGRISOLVE, the smart farmer way.
+        <Agrsolve team>
+        """
+    account_sid = os.getenv('account_sid')
+    auth_token = os.getenv('auth_token')
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+        messaging_service_sid=os.getenv('messaging_service_sid'),
+        body=message,
+        to=phone
+)
+
+    return {"message":message}
+
 
 if __name__ == "__main__":
     app.run(debug = True, port=5000)
