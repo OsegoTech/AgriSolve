@@ -7,7 +7,7 @@ import { ThemeToggle } from '../buttons/ThemeToogle'
 export default function HomeNav() {
   const { toast } = useToast()
   return (
-    <nav className='sticky z-50 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-8 dark:bg-gray-800'>
+    <nav className='sticky z-50 h-16 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-8 dark:bg-gray-800'>
       <Image
         draggable={false}
         src='/leaf_logo.svg'
@@ -19,6 +19,7 @@ export default function HomeNav() {
       />
 
       <ul className='hidden md:flex space-x-4 text-sm'>
+      <li className='cursor-pointer'>Explore</li>
         <li
           onClick={() => {
             toast({
@@ -28,9 +29,8 @@ export default function HomeNav() {
           }}
           className='cursor-pointer'
         >
-          Marketplace
+          Shop
         </li>
-        <li className='cursor-pointer'>Explore</li>
         <li className='cursor-pointer'>Forecasts</li>
       </ul>
 
