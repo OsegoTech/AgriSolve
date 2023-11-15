@@ -1,12 +1,11 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { LoginDialog } from '../logins/Login'
-import { SignUpDialog } from '../logins/Signup'
-import { ThemeToggle } from '../buttons/ThemeToogle'
+import Image from "next/image"
+import Link from "next/link"
+import { ThemeToggle } from "../buttons/ThemeToogle"
 
-export default function HomeNav() {
-  return (
-    <nav className='sticky z-50 h-16 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-8 dark:bg-gray-800'>
+export const ShopNav = () => {
+    return (
+    <nav>
+<nav className='sticky z-50 h-16 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-8 dark:bg-gray-800'>
       <Image
         draggable={false}
         src='/leaf_logo.svg'
@@ -31,10 +30,11 @@ export default function HomeNav() {
       </ul>
 
       <ul className='flex space-x-2 text-sm'>
-        <LoginDialog />
-        <SignUpDialog />
+
         <ThemeToggle/>
       </ul>
     </nav>
-  )
+
+    </nav>
+    )
 }

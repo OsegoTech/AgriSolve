@@ -14,8 +14,8 @@ import { MainNav } from '@/components/dashboard/main-nav'
 import { Overview } from '@/components/dashboard/overview'
 import { RecentSales } from '@/components/dashboard/recent-sales'
 import { Search } from '@/components/dashboard/search'
-import TeamSwitcher from '@/components/dashboard/team-switcher'
 import { UserNav } from '@/components/dashboard/user-nav'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Dashboard',
@@ -25,30 +25,30 @@ export const metadata: Metadata = {
 export default function DashboardPage() {
   return (
     <>
-
       <div className='flex-col md:flex'>
-        <div className='sticky top-0 z-50 bg-white border-b'>
+        <div className='sticky top-0 z-50 bg-white border-b dark:bg-gray-800'>
           <div className='flex h-16 items-center px-4'>
-            <Image
-              draggable={false}
-              src='/leaf_logo.svg'
-              alt='Leaf Logo'
-              className='mx-4 dark:invert'
-              width={33}
-              height={33}
-              priority
-            />
+            <Link href='/'>
+              <Image
+                draggable={false}
+                src='/leaf_logo.svg'
+                alt='Leaf Logo'
+                className='mx-4 dark:invert'
+                width={33}
+                height={33}
+                priority
+              />
+            </Link>
             <MainNav className='mx-auto' />
 
             <div className='ml-auto flex items-center space-x-4'>
               <Search />
               <UserNav />
             </div>
-
           </div>
         </div>
 
-        <div className='flex-1 space-y-4 p-8 pt-6 bg-neutral-50'>
+        <div className='flex-1 space-y-4 p-8 pt-6 bg-neutral-50 dark:bg-gray-900'>
           <div className='flex items-center justify-between space-y-2'>
             <h2 className='text-3xl font-bold tracking-tight'>Dashboard</h2>
             <div className='flex items-center space-x-2'>
