@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 
 export default function Home() {
   return (
-    <main className='min-h-screen bg-neutral-50 pb-8 pt-6 md:pb-12 md:pt-10 py-32'>
+    <main className='min-h-screen bg-neutral-50 pb-8 pt-6 md:pb-12 md:pt-10 py-32 dark:bg-gray-800'>
       <div className='container flex max-w-[64rem] flex-col items-center gap-4 text-center md:px-24 py-12 lg:pt-24 select-none'>
         <h1 className='font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl'>
           Agricultural solutions reimagined.
@@ -71,7 +71,7 @@ export default function Home() {
               />
             </div>
 
-            <div className='space-y-2 bg-white p-6 shadow rounded-md'>
+            <div className='space-y-2 bg-white p-6 shadow rounded-md dark:bg-neutral-950'>
               <p className='scroll-m-20 text-lg font-semibold tracking-tight'>
                 Weather updates every second
               </p>
@@ -94,7 +94,7 @@ export default function Home() {
               />
             </div>
 
-            <div className='space-y-2 bg-white p-6 shadow rounded-md'>
+            <div className='space-y-2 bg-white p-6 shadow rounded-md dark:bg-neutral-950'>
               <p className='scroll-m-20 text-lg font-semibold tracking-tight'>
                 Ai Crop Disease Detection
               </p>

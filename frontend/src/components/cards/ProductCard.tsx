@@ -20,11 +20,11 @@ export function ProductCard() {
 
       <CardContent className='p-3'>
         <div>
-          <p className='uppercase text-[0.6em] font-semibold text-gray-800 truncate'>
+          <p className='uppercase text-[0.6em] font-semibold text-gray-800 truncate dark:text-gray-300'>
             Product Name
           </p>
           <p>$100</p>
-          <p className='capitalize text-[0.8em] text-gray-800 line-clamp-2'>
+          <p className='capitalize text-[0.8em] text-gray-800 line-clamp-2 dark:text-gray-300'>
             This is the product description that goes on and on.
           </p>
         </div>
@@ -33,7 +33,7 @@ export function ProductCard() {
       <CardFooter className='p-3 pt-0' >
       <Link href='#' className='flex items-center justify-start space-x-4 transition-all duration-300 hover:opacity-80 active:opacity-100'>
         <p className='text-sm'>View product</p>
-        <FaArrowRightLong className='text-gray-700' />
+        <FaArrowRightLong className='text-gray-700 dark:text-gray-200' />
         </Link>
       </CardFooter>
     </Card>

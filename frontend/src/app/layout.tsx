@@ -5,6 +5,7 @@ import localFont from 'next/font/local'
 import { Toaster } from '@/components/ui/toaster'
 import ReduxProvider from '@/store/redux_provider'
 import { cn } from '@/lib/utils'
+import { ThemeProvider } from '@/providers/ThemeProvider'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -28,10 +29,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={cn("font-sans antialiased",fontSans.variable, fontHeading.variable)}>
+      <body
+        className={cn(
+          'font-sans antialiased',
+          fontSans.variable,
+          fontHeading.variable
+        )}
+      >
         <ReduxProvider>
-          {children}
-          <Toaster />
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster />
+          </ThemeProvider>
         </ReduxProvider>
       </body>
     </html>
