@@ -18,7 +18,6 @@ The Authenticati
 
 ## Introduction
 
-Brief introduction to your project.
 
 ## Installation
 
@@ -32,7 +31,7 @@ git clone https://github.com/your-username/your-repository.git
 cd your-repository
 
 # Install dependencies
-npm install
+pnpm install
 ```
 
 ## Usage
@@ -41,7 +40,7 @@ Explain how to use your project, any important considerations, and provide examp
 
 ```bash
 # Start the server
-npm start
+pnpm start
 ```
 
 ## Endpoints
@@ -206,10 +205,7 @@ npm start
   }
   ```
 
-## Contributing
-
-Guidelines for contributing to the project.
 
 ## License
 
-This project is licensed under the [Your License Name](LICENSE.md) License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the [MIT](LICENSE.md) License - see the [LICENSE.md](LICENSE.md) file for details.
