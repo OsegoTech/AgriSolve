@@ -199,25 +199,23 @@ def notify():
         message = data['message']
     except KeyError:
         message = """
-        Hello! 👋
+Hello! 👋
 
-        Thank you for signing up for AGRISOLVE notifications. We're excited to have you as part of the AGRISOLVE community!
+Thank you for signing up for AGRISOLVE notifications. We're excited to have you as part of the AGRISOLVE community!
+AGRISOLVE uses advanced technology to provide farmers with data-driven insights to improve crop yields and efficiency. By signing up for SMS alerts, you'll receive helpful notifications right on your phone to keep you up-to-date.
 
-        AGRISOLVE uses advanced technology to provide farmers with data-driven insights to improve crop yields and efficiency. By signing up for SMS alerts, you'll receive helpful notifications right on your phone to keep you up-to-date.
+Notifications may include:
+- Weather alerts 🌧️
+- Pest and disease warnings 🐛
+- Crop pricing and market information 💰
 
-        Notifications may include:
+Our goal is to make agriculture more profitable and sustainable using the power of technology. We hope these notifications provide value and make your life a little easier.
 
-        - Weather alerts 🌧️
-        - Pest and disease warnings 🐛
-        - Crop pricing and market information 💰
+Thank you for choosing AGRISOLVE as your smart farming partner! Let us know if you have any other questions.
 
-        Our goal is to make agriculture more profitable and sustainable using the power of technology. We hope these notifications provide value and make your life a little easier.
+Happy growing! 🌾
 
-        Thank you for choosing AGRISOLVE as your smart farming partner! Let us know if you have any other questions.
-
-        Happy growing! 🌾
-
-        - The AGRISOLVE Team 👩‍🌾👨‍🌾
+- The AGRISOLVE Team 👩‍🌾👨‍🌾
         """
     account_sid = os.getenv('account_sid')
     auth_token = os.getenv('auth_token')
@@ -229,7 +227,7 @@ def notify():
         to=phone
 )
 
-    return {"message":message}
+    return {"message":message.sid}
 
 
 if __name__ == "__main__":
