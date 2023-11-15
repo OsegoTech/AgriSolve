@@ -3,7 +3,6 @@ import { MdOutlineShoppingCart } from 'react-icons/md'
 import { ThemeToggle } from '../buttons/ThemeToogle'
 import { Button } from '../ui/button'
 import Link from 'next/link'
-import CategoriesHoverCard from '../cards/hover_cards/CategoriesHoverCard'
 import { CartSheet } from '../modals/CartSheet'
 import {
   Select,
@@ -17,8 +16,7 @@ import {
 
 export const ShopNav = () => {
   return (
-    <nav>
-      <nav className='sticky z-50 h-16 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-8 dark:bg-gray-800'>
+      <nav className='sticky z-50 h-16 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-72 dark:bg-gray-800'>
         <Image
           draggable={false}
           src='/leaf_logo.svg'
@@ -74,6 +72,5 @@ export const ShopNav = () => {
           <ThemeToggle />
         </ul>
       </nav>
-    </nav>
   )
 }

@@ -11,7 +11,6 @@ import {
 import { MdOutlineShoppingCart } from 'react-icons/md'
 import { ScrollArea } from '../ui/scroll-area'
 import { Separator } from '../ui/separator'
-import Image from 'next/image'
 import CartProductCard from '../cards/CartProductCard'
 
 const tags = Array.from({ length: 20 }).map(
