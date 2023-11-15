@@ -6,15 +6,15 @@ const User = require("../models/userAuthModel");
 //ACCESS TOKEN GENERATION
 const generateAccessToken = (userId) => {
     const payload = { userId };
-    const secretKey = 'my-secret-key';
-    const options = { expiresIn: '2h' };
+    const secretKey = process.env.JWT
+    const options = { expiresIn: '1d' };
     return jwt.sign(payload, secretKey, options);
 }
 
 //REFRESH TOKEN GENERATION
 const generateRefreshToken = (userId) => {
     const payload = { userId };
-    const secretKey = 'my-secret-key';
+    const secretKey = process.env.JWT;
     const options = { expiresIn: '7d' };
     return jwt.sign(payload, secretKey, options);
 };
@@ -26,7 +26,6 @@ module.exports = {
     registerUser: async(req, res) => {
         const { name, username, password, email, phoneNumber, location } = req.body
 
-    
         try{
             //Check if the username exists
             const existingUser = await User.findOne({ username })
@@ -49,7 +48,6 @@ module.exports = {
             await newUser.save()
             
             res.status(200).json({ message: 'User registered successfully' })
-            console.log(hashedPassword)
         } catch(err){
             console.error(err.message)
             res.status(500).json({error: "Internal Server Error"})
@@ -81,6 +79,7 @@ module.exports = {
             res.status(500).json({ error: "Internal Server Error"})
         }
     },
+    
     logoutUser: async(req, res) => {
         try{
              //Extract the access token from the authorization header
@@ -88,7 +87,7 @@ module.exports = {
             const accessToken = authorizationHeader.split(' ')[1];
             
             // Verify the access token
-            const secretKey = 'my-secret-key';
+            const secretKey = process.env.JWT
             const decodedAccessToken = jwt.verify(accessToken, secretKey);
             
             if (!decodedAccessToken) {
@@ -107,5 +106,26 @@ module.exports = {
             res.status(500).json({ error: "Internal Server Error" })
         }
      
+    },
+    blacklistedTokens,
+    refreshAccessToken: (req, res) => {
+        const refreshToken = req.body.refreshToken
+
+        if (!refreshToken || blacklistedTokens.includes(refreshToken)) {
+            return res.status(401).json({ error: 'Invalid or expired refresh token' });
+        }
+        try {
+            // Verify the refresh token
+            const secretKey = process.env.JWT
+            const decodedRefreshToken = jwt.verify(refreshToken, secretKey);
+        
+            // Generate a new access token
+            const newAccessToken = generateAccessToken(decodedRefreshToken.userId);
+        
+            res.json({ accessToken: newAccessToken });
+        } catch (error) {
+            console.error(error);
+            res.status(401).json({ error: 'Invalid or expired refresh token' });
+        }
     }
 }

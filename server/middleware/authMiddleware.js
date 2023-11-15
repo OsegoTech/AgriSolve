@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
+const { blacklistedTokens } = require('../controllers/userAuthController')
+const User = require('../models/userAuthModel')
 
-const verifyToken = (req, res, next) => {
+const verifyToken = async(req, res, next) => {
     const authorizationHeader = req.headers['authorization']
     if (!authorizationHeader) {
         return res.status(401).json({ message: "Access denied. No token provided"})
@@ -10,13 +12,17 @@ const verifyToken = (req, res, next) => {
     if (!token){
         return res.status(401).json({ message: "Invalid message format"})
     }
-    const secretKey = 'my-secret-key'
-    jwt.verify(token, secretKey, (err, user) => {
-        if (err) {
-            return res.status(403).json({ message: "Invalid token"})
-        }
-        req.user = user
-        next()
-    })
+    //Check if token is blacklisted 
+    if (blacklistedTokens.includes(token)) {
+        return res.status(401).json({ message: "Inavlid or expired token"})
+    }
+    const secretKey = process.env.JWT
+    const decoded = jwt.verify(token, secretKey)
+    const user = await User.findById(decoded.userId)
+    if (!user) {
+        return res.status(401).json({ error: "Unauthorized"})
+    }
+    req.user = { userId: user._id}
+    next()
 }
 module.exports = { verifyToken}

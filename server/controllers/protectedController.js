@@ -7,5 +7,4 @@ module.exports = {
         const user = req.user
         res.json({ message: "This is the user profile page", user})
     }
-
 }

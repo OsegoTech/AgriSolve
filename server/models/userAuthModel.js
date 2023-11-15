@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: String
     },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
     location: {
         type: String,
         required: true
@@ -20,12 +25,6 @@ const userSchema = new mongoose.Schema({
     phoneNumber: {
         type: String, 
         required: true
-    },
-    accessToken: {
-        type: String
-    },
-    refreshToken: {
-        type: String
     }
 })
 
