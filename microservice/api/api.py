@@ -14,6 +14,7 @@ from flask_cors import cross_origin, CORS
 import requests
 from dotenv import load_dotenv
 import os 
+from twilio.rest import Client
 
 #SCRAPPING LOGIC
 import requests
@@ -180,6 +181,56 @@ def get_forecast_data():
         return {'ERROR':'{latitude ,longitude} is required'}
 
 #messages on alerts
+@app.post('/api/v1/messaging')
+@cross_origin()
+def notify():
+    """
+    {
+      'phone':+(code)XXXXXXXXX,
+      'message':'test message',
+    }
+    """
+    data = request.get_json()
+    try:
+        phone = data['phone']
+    except KeyError:
+        return {"error":"phone number is required in the format +(code)xxxxxxxxx"}
+    try:
+        message = data['message']
+    except KeyError:
+        message = """
+        Hello! 👋
+
+        Thank you for signing up for AGRISOLVE notifications. We're excited to have you as part of the AGRISOLVE community!
+
+        AGRISOLVE uses advanced technology to provide farmers with data-driven insights to improve crop yields and efficiency. By signing up for SMS alerts, you'll receive helpful notifications right on your phone to keep you up-to-date.
+
+        Notifications may include:
+
+        - Weather alerts 🌧️
+        - Pest and disease warnings 🐛
+        - Crop pricing and market information 💰
+
+        Our goal is to make agriculture more profitable and sustainable using the power of technology. We hope these notifications provide value and make your life a little easier.
+
+        Thank you for choosing AGRISOLVE as your smart farming partner! Let us know if you have any other questions.
+
+        Happy growing! 🌾
+
+        - The AGRISOLVE Team 👩‍🌾👨‍🌾
+        """
+    account_sid = os.getenv('account_sid')
+    auth_token = os.getenv('auth_token')
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+        messaging_service_sid=os.getenv('messaging_service_sid'),
+        body=message,
+        to=phone
+)
+
+    return {"message":message}
+
 
 if __name__ == "__main__":
     app.run(debug = True, port=5000)
