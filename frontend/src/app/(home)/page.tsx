@@ -1,13 +1,12 @@
 'use client'
 
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md'
-import { ProductCard } from '@/components/cards/ProductCard'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import Image from 'next/image'
-import { Button, buttonVariants } from '@/components/ui/button'
 import Link from 'next/link'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import { ProductCard } from '@/components/cards/ProductCard'
+import { Button, buttonVariants } from '@/components/ui/button'
 
 export default function Home() {
   return (
@@ -24,7 +23,7 @@ export default function Home() {
         </h4>
 
         <div className='space-y-4 md:space-x-4'>
-          <Link href='/login' className={cn(buttonVariants({ size: 'lg' }))}>
+          <Link href='/dashboard' className={cn(buttonVariants({ size: 'lg' }))}>
             Get Started
           </Link>
           <Link
@@ -41,7 +40,7 @@ export default function Home() {
       <div className='mt-8'>
         <div className='md:w-[65%] mx-auto space-y-8 p-3'>
           <div className='flex items-center justify-center space-x-2 cursor-pointer select-none hover:opacity-70'>
-            <p className='text-start font-semibold'>Continue to marketplace</p>
+            <Link href='/shop' className='text-start font-semibold'>View top products in marketplace</Link>
             <MdOutlineKeyboardDoubleArrowRight size={19} />
           </div>
 
