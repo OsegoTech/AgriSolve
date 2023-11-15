@@ -11,6 +11,8 @@ import {
 import { MdOutlineShoppingCart } from 'react-icons/md'
 import { ScrollArea } from '../ui/scroll-area'
 import { Separator } from '../ui/separator'
+import Image from 'next/image'
+import CartProductCard from '../cards/CartProductCard'
 
 const tags = Array.from({ length: 20 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`
@@ -31,10 +33,16 @@ export function CartSheet({ button }: { button: React.ReactNode }) {
           <SheetDescription></SheetDescription>
         </SheetHeader>
 
-        <ScrollArea className='max-h-[73%] w-full p-2 rounded-md border'>
+        <ScrollArea className='max-h-[73%] overflow-y-auto w-full p-2 rounded-md border'>
           {tags.map((tag) => (
-            <div key={tag} className='text-sm'>
-              {tag}
+            <div key={tag} className='py-2'>
+              <CartProductCard
+                productPrice={'$24.99'}
+                productImage='https://picsum.photos/200'
+                productName='Product name that is meant to wrap to two lines'
+                isInStock={true}
+              />
+              <Separator />
             </div>
           ))}
         </ScrollArea>
