@@ -1,3 +1,4 @@
+import { Footer } from '@/components/layouts/Footer'
 import { ShopNav } from '@/components/layouts/ShopNav'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -5,6 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div>
       <ShopNav />
       {children}
+      <Footer/>
     </div>
   )
 }

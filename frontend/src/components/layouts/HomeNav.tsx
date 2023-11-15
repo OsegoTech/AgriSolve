@@ -3,6 +3,9 @@ import Image from 'next/image'
 import { LoginDialog } from '../logins/Login'
 import { SignUpDialog } from '../logins/Signup'
 import { ThemeToggle } from '../buttons/ThemeToogle'
+import { CiShop } from 'react-icons/ci'
+import { TiWeatherPartlySunny } from 'react-icons/ti'
+import { FaDisease } from 'react-icons/fa'
 
 export default function HomeNav() {
   return (
@@ -18,22 +21,25 @@ export default function HomeNav() {
       />
 
       <ul className='hidden md:flex space-x-4 text-sm'>
-      <li className='cursor-pointer'>Explore</li>
-        <Link
-          href='/shop'
-          className='cursor-pointer'
-        >
-          Shop
+        <Link href='/shop' className='cursor-pointer flex items-center gap-1'>
+          <CiShop />
+          <span>Shop</span>
         </Link>
-        <li className='cursor-pointer'>Forecasts</li>
- <li className='cursor-pointer'>Diseases</li>
+        <li className='cursor-pointer flex items-center gap-1'>
+          <TiWeatherPartlySunny />
+          <span>Forecasts</span>
+        </li>
 
+        <li className='cursor-pointer flex items-center gap-1'>
+          <FaDisease />
+          <span>Diseases</span>
+        </li>
       </ul>
 
       <ul className='flex space-x-2 text-sm'>
         <LoginDialog />
         <SignUpDialog />
-        <ThemeToggle/>
+        <ThemeToggle />
       </ul>
     </nav>
   )
