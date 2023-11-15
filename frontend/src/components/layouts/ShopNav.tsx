@@ -5,6 +5,15 @@ import { Button } from '../ui/button'
 import Link from 'next/link'
 import CategoriesHoverCard from '../cards/hover_cards/CategoriesHoverCard'
 import { CartSheet } from '../modals/CartSheet'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export const ShopNav = () => {
   return (
@@ -21,17 +30,32 @@ export const ShopNav = () => {
         />
 
         <ul className='flex flex-col md:flex-row items-center space-x-4 text-sm'>
+
+          <Select>
+            <SelectTrigger className='w-[180px]'>
+              <SelectValue placeholder='Select Category' />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Categories</SelectLabel>
+                <SelectItem value='apple'>Fruits</SelectItem>
+                <SelectItem value='banana'>Flower</SelectItem>
+                <SelectItem value='blueberry'>Cereals</SelectItem>
+                <SelectItem value='grapes'>Meats</SelectItem>
+                <SelectItem value='pineapple'>Vegetables</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+
           <Link
-            href='/'
-            className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'
+          href='/'
+          className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'
           >
-            Home
+          Home
           </Link>
 
-          <CategoriesHoverCard />
-
           <li className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'>
-            About
+            Offers
           </li>
 
           <li className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'>
