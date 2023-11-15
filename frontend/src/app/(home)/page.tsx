@@ -40,7 +40,7 @@ export default function Home() {
       <div className='mt-8'>
         <div className='md:w-[65%] mx-auto space-y-8 p-3'>
           <div className='flex items-center justify-center space-x-2 cursor-pointer select-none hover:opacity-70'>
-            <p className='text-start font-semibold'>View top products in marketplace</p>
+            <Link href='/shop' className='text-start font-semibold'>View top products in marketplace</Link>
             <MdOutlineKeyboardDoubleArrowRight size={19} />
           </div>
 
