@@ -3,13 +3,20 @@ import { MdOutlineShoppingCart } from 'react-icons/md'
 import { ThemeToggle } from '../buttons/ThemeToogle'
 import { Button } from '../ui/button'
 import Link from 'next/link'
-import CategoriesHoverCard from '../cards/hover_cards/CategoriesHoverCard'
 import { CartSheet } from '../modals/CartSheet'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export const ShopNav = () => {
   return (
-    <nav>
-      <nav className='sticky z-50 h-16 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-8 dark:bg-gray-800'>
+      <nav className='sticky z-50 h-16 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-72 dark:bg-gray-800'>
         <Image
           draggable={false}
           src='/leaf_logo.svg'
@@ -21,17 +28,32 @@ export const ShopNav = () => {
         />
 
         <ul className='flex flex-col md:flex-row items-center space-x-4 text-sm'>
+
+          <Select>
+            <SelectTrigger className='w-[180px]'>
+              <SelectValue placeholder='Select Category' />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Categories</SelectLabel>
+                <SelectItem value='apple'>Fruits</SelectItem>
+                <SelectItem value='banana'>Flower</SelectItem>
+                <SelectItem value='blueberry'>Cereals</SelectItem>
+                <SelectItem value='grapes'>Meats</SelectItem>
+                <SelectItem value='pineapple'>Vegetables</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+
           <Link
-            href='/'
-            className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'
+          href='/'
+          className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'
           >
-            Home
+          Home
           </Link>
 
-          <CategoriesHoverCard />
-
           <li className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'>
-            About
+            Offers
           </li>
 
           <li className='cursor-pointer hover:underline font-medium text-primary underline-offset-4'>
@@ -50,6 +72,5 @@ export const ShopNav = () => {
           <ThemeToggle />
         </ul>
       </nav>
-    </nav>
   )
 }
