@@ -1,11 +1,12 @@
 import Image from 'next/image'
-import PrimaryButton from '../buttons/PrimaryButton'
 import { useToast } from '../ui/use-toast'
+import { LoginDialog } from '../logins/Login'
+import { SignUpDialog } from '../logins/Signup'
 
 export default function HomeNav() {
   const { toast } = useToast()
   return (
-    <nav className='flex flex-row items-center justify-between p-2 px-4 lg:px-8'>
+    <nav className='sticky top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-8'>
       <Image
         draggable={false}
         src='/leaf_logo.svg'
@@ -32,20 +33,9 @@ export default function HomeNav() {
         <li className='cursor-pointer'>Forecasts</li>
       </ul>
 
-      <ul className='flex space-x-4 text-sm'>
-        <PrimaryButton
-          variant='outline'
-          onClick={() => {}}
-          className='text-xs rounded-[4px] py-3 px-4'
-        >
-          Log in
-        </PrimaryButton>
-        <PrimaryButton
-          onClick={() => {}}
-          className='text-xs rounded-[4px] py-3 px-4'
-        >
-          Sign up
-        </PrimaryButton>
+      <ul className='flex space-x-2 text-sm'>
+        <LoginDialog />
+        <SignUpDialog />
       </ul>
     </nav>
   )
