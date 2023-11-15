@@ -68,6 +68,6 @@ def weather_forecast():
     return resp 
 def send_message():
     url = "http://127.0.0.1:5000/api/v1/messaging"
-    resp = requests.post(url,json={'phone':'+254702716555','message':'hello'}).content
+    resp = requests.post(url,json={'phone':'+254702716555'}).content
     print(resp)
 send_message()
