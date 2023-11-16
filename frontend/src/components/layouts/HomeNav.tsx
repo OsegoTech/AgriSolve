@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { CiShop } from 'react-icons/ci'
+import { FaDisease } from 'react-icons/fa'
 import { LoginDialog } from '../logins/Login'
 import { SignUpDialog } from '../logins/Signup'
 import { ThemeToggle } from '../buttons/ThemeToogle'
-import { CiShop } from 'react-icons/ci'
 import { TiWeatherPartlySunny } from 'react-icons/ti'
-import { FaDisease } from 'react-icons/fa'
 
 export default function HomeNav() {
   return (
@@ -21,16 +21,16 @@ export default function HomeNav() {
       />
 
       <ul className='hidden md:flex space-x-4 text-sm'>
-        <Link href='/shop' className='cursor-pointer flex items-center gap-1'>
+        <Link href='/shop' className='cursor-pointer flex items-center gap-1 hover:underline underline-offset-2'>
           <CiShop />
           <span>Shop</span>
         </Link>
-        <li className='cursor-pointer flex items-center gap-1'>
+        <li className='cursor-pointer flex items-center gap-1 hover:underline underline-offset-2'>
           <TiWeatherPartlySunny />
           <span>Forecasts</span>
         </li>
 
-        <li className='cursor-pointer flex items-center gap-1'>
+        <li className='cursor-pointer flex items-center gap-1 hover:underline underline-offset-2'>
           <FaDisease />
           <span>Diseases</span>
         </li>
