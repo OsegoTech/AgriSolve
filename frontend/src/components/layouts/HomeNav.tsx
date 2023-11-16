@@ -2,10 +2,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { CiShop } from 'react-icons/ci'
 import { FaDisease } from 'react-icons/fa'
-import { LoginDialog } from '../logins/Login'
-import { SignUpDialog } from '../logins/Signup'
 import { ThemeToggle } from '../buttons/ThemeToogle'
 import { TiWeatherPartlySunny } from 'react-icons/ti'
+import { Button } from '../ui/button'
 
 export default function HomeNav() {
   return (
@@ -37,8 +36,12 @@ export default function HomeNav() {
       </ul>
 
       <ul className='flex space-x-2 text-sm'>
-        <LoginDialog />
-        <SignUpDialog />
+      <Link href='/login'>
+       <Button variant="outline">Login</Button>
+       </Link>
+       <Link href='/register'>
+       <Button >Sign Up</Button>
+       </Link>
         <ThemeToggle />
       </ul>
     </nav>
