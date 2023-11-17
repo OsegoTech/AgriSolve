@@ -7,7 +7,7 @@ const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 export default function Page() {
   return (
     <div className='min-h-screen bg-neutral-50 pb-8 pt-6 md:pb-12 md:pt-10 py-32 lg:px-72  dark:bg-gray-800'>
-      <div className='bg-white shadow mx-4 dark:bg-slate-950 rounded-md p-4 w-full'>
+      <div className='bg-white shadow mx-4 dark:bg-slate-950 rounded-md p-4 lg:w-full'>
         <div className='flex items-center gap-2'>
           <LuCloudSun size={35} className='text-gray-500 dark:text-primary' />
           <h1 className='scroll-m-20 text-xl font-semibold tracking-tight'>
