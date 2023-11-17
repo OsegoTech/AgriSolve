@@ -9,12 +9,18 @@
 # Pest detection -| try control measure using wikipedia
 
 #imports
-from flask import Flask,request
+from flask import Flask,request,jsonify
 from flask_cors import cross_origin, CORS
 import requests
 from dotenv import load_dotenv
+import base64
 import os 
+import time
+import json
 from twilio.rest import Client
+from requests.auth import HTTPBasicAuth
+from datetime import datetime
+from supabase import create_client, Client
 
 #SCRAPPING LOGIC
 import requests
@@ -229,6 +235,109 @@ Happy growing! 🌾
 
     return {"message":message.sid}
 
+#MPESA LOGIC
+key = os.getenv('MPESA_KEY')
+secret = os.getenv('MPESA_SECRET')
+
+def send_stk_push(phone: str, amount: int,token:str)->str:
+  """
+  {
+  'number': '254712345678',
+  'amount': '100',
+  
+  }
+  """
+  api_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+
+  timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+  password = '174379' + key + timestamp
+  headers = {
+      'Authorization': 'Bearer '+token,
+      'Content-Type': 'application/json'
+  }
+  password = '174379' + 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919' + timestamp
+  password = password.encode('ascii')
+  password = base64.b64encode(password).decode('utf8')
+
+  request = {
+      'BusinessShortCode': '174379',
+      'Password': f"{password}",
+      'Timestamp': timestamp,
+      'TransactionType': 'CustomerPayBillOnline',
+      'Amount': amount,
+      'PartyA': f"{phone}",
+      'PartyB': 174379,
+      'PhoneNumber': f"{phone}",
+      'CallBackURL': 'https://agri-solve-microservice.vercel.app/mpesa-callback',#update with the url to your own callback
+      'AccountReference': 'Agrisolve',
+      'TransactionDesc': 'AGRI-PAY'
+  }
+
+  response = requests.post(api_URL, json=request, headers=headers)
+  try:
+    return response.json()['CheckoutRequestID']
+  except KeyError:
+    print(response.content)
+    return "Error"
+
+@app.route('/api/v1/mpesa/stk_push', methods=['POST'])
+def mpesa_stkpush():
+  data = request.get_json()
+  
+  #get access token
+  key = os.getenv('MPESA_KEY')
+  secret = os.getenv('MPESA_SECRET')
+  url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+  access_token = requests.get(url,auth=HTTPBasicAuth(key, secret)).json()['access_token']
+  
+  #send stk push
+  try:
+    rqst_id = send_stk_push(data['phone'], data['amount'],access_token)
+    return jsonify({'message': 'success', 'rqst_id': rqst_id})
+  except requests.JSONDecodeError:
+    return jsonify({"error": "Invalid Request"})
+
+@app.route('/mpesa-callback', methods=['POST', 'OPTIONS'])
+def receive_mpesa():
+  data = json.loads(request.get_data().decode('utf8'))
+  #creds to supabase
+  url = os.getenv('SUPABASE_URL')
+  key = os.getenv('SUPABASE_KEY')
+  supabase: Client = create_client(url, key)
+  body = data['Body']['stkCallback']
+  supabase.table('transactions').insert({"MerchantRequestID":body['MerchantRequestID'],"CheckoutRequestID":body['CheckoutRequestID'],"ResultCode":body['ResultCode'],"ResultDesc":body['ResultDesc']}).execute()
+  return jsonify(data)
+
+@app.post('/api/v1/mpesa/confirm_transaction')
+def confirm_transaction():
+  """
+  {
+  'message': 'success',
+  'rqst_id': rqst_id
+  }
+  
+  """
+  #confirm transaction
+  try:
+    #creds to supabase
+    msg = ""
+    url = os.getenv('MPESA_URL')
+    key = os.getenv('MPESA_KEY')
+    
+    rqst_id = request.get_json()['rqst_id']
+  
+    print("request id: ",rqst_id)
+    while True:
+      supabase: Client = create_client(url, key)
+      response = supabase.table('transactions').select('*').eq(
+          'CheckoutRequestID', rqst_id).execute().data
+      if response:
+        msg = response[0]['ResultDesc']
+        break
+      time.sleep(1)
+    return jsonify({"message":msg})
+  except requests.JSONDecodeError:
+    return jsonify({"error": "Invalid Request"})
 
 if __name__ == "__main__":
     app.run(debug = True, port=5000)

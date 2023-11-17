@@ -110,6 +110,84 @@ On error, it will return a JSON object with an error message, such as:
   "error":"Phone number is required in format +(countrycode)xxxxxxxxxx"
 }
 ```
+Here is how to call the different routes in the M-PESA API:
+
+### Send STK Push
+
+To initiate an M-PESA STK push, make a POST request to:
+
+```
+/api/v1/mpesa/stk_push
+```
+
+With a JSON body containing:
+
+```json
+{
+  "phone": "2547XXXXXXXX",
+  "amount": 100
+}
+```
+
+### Confirm Transaction
+
+To confirm whether a transaction was successful, make a POST request to: 
+
+```
+/api/v1/mpesa/confirm_transaction 
+```
+
+With a JSON body containing the CheckoutRequestID returned from stk_push:
+
+```json
+{
+  "rqst_id": "ws_CO_DMZ_12345566" 
+}
+```
+
+This will check the status in the database and return whether the transaction was successful.
+
+### Receive Callback
+
+The M-PESA callback endpoint is:
+
+```
+/mpesa-callback
+```
+
+Safaricom will send a POST request to this endpoint with the transaction status.
+
+The code handles receiving and storing the callback data automatically.
+
+### Response Formats
+
+On success, the endpoints will return a 200 OK with a JSON body like:
+
+```json
+{
+  "message": "success"
+}
+```
+
+On failure, a JSON error response will be returned like:
+
+```json
+{
+  "error": "Error message"
+}
+```
+
+The stk_push endpoint additionally returns the CheckoutRequestID on success:
+
+```json 
+{
+  "message": "success",
+  "rqst_id": "ws_CO_DMZ_12345678"
+}
+```
+
+So in summary, call stk_push to initiate a transaction, pass the rqst_id to confirm_transaction to check status, and receive callbacks on /mpesa-callback.
+
 
 ## Running Locally
 
