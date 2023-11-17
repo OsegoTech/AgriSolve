@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { UserAuthForm } from "@/components/forms/user-auth-form"
+import {  UserSignInAuthForm } from "@/components/forms/user-auth-form"
 
 export const metadata: Metadata = {
   title: "Login",
@@ -34,7 +34,7 @@ export default function LoginPage() {
             Enter your email to sign in to your account
           </p>
         </div>
-        <UserAuthForm />
+        <UserSignInAuthForm />
         <p className="px-8 text-center text-sm text-muted-foreground">
           <Link
             href="/register"
