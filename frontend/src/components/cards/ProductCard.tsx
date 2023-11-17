@@ -105,9 +105,20 @@ export function ShopProductCard({ className }: { className?: string }) {
           </Link>
         </CardFooter>
       </Card>
+
       <DialogContent className='sm:max-w-[425px]'>
+       <Image
+            draggable={false}
+            src='https://picsum.photos/400'
+            alt='Product Image'
+            className='object-cover transition-all mx-auto rounded-md w-auto h-auto '
+            width={200}
+            height={200}
+            priority
+          />
+
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle className='line-clamp-1 capitalize'>Coffe name that is very long that can wrap to the next line</DialogTitle>
           <DialogDescription>
             Make changes to your profile here. Click save when you're done.
           </DialogDescription>
