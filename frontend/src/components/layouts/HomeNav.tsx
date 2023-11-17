@@ -40,7 +40,7 @@ export default function HomeNav() {
        <Button variant="outline">Login</Button>
        </Link>
        <Link href='/register'>
-       <Button variant="outline">Sign Up</Button>
+       <Button>Sign Up</Button>
        </Link>
         <ThemeToggle />
       </ul>

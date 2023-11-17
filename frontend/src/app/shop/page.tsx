@@ -7,7 +7,7 @@ import { ProductCard } from '@/components/cards/ProductCard'
 
 export default function Page() {
   return (
-    <div className='px-4 lg:px-72 space-y-8 min-h-screen py-8 pb-20 bg-neutral-50 font-primary dark:bg-gray-900'>
+    <div className='px-4 lg:px-72 space-y-8 min-h-screen py-8 pb-20 bg-neutral-50 font-primary dark:bg-slate-800'>
       <MarketingStrip />
 
       <div className='space-y-4'>

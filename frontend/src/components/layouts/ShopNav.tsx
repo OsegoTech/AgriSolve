@@ -19,7 +19,7 @@ import {
 
 export const ShopNav = () => {
   return (
-      <nav className='sticky z-50 h-16 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-72 dark:bg-gray-800'>
+      <nav className='sticky z-50 h-16 top-0 backdrop:blur-lg flex bg-white shadow-sm flex-row items-center justify-between p-2 px-4 lg:px-72 dark:border-b dark:border-slate-700 dark:bg-gray-800'>
       <Link href='/'>
         <Image
           draggable={false}
