@@ -27,7 +27,7 @@ export default function Home() {
             Get Started
           </Link>
           <Link
-            href={'/'}
+            href={'/shop'}
             target='_blank'
             rel='noreferrer'
             className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
@@ -79,7 +79,7 @@ export default function Home() {
                 helps you to plan your farming activities and also helps you to
                 know when to plant and when not to plant.
               </p>
-              <Button>Get Started</Button>
+              <Button variant='secondary'>Get Started</Button>
             </div>
           </div>
 
@@ -102,7 +102,7 @@ export default function Home() {
                 provide you with a database of crop diseases and their
                 solutions. Improve your crop yield with our Ai.
               </p>
-              <Button>Get Started</Button>
+              <Button variant='secondary'>Get Started</Button>
             </div>
           </div>
         </div>
