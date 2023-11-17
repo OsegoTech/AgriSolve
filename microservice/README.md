@@ -11,7 +11,7 @@ The API has the following endpoints:
 - `POST /api/v1/pest-classification` - Identify pests from images  
 - `POST /api/v1/current_weather` - Get current weather data
 - `POST /api/v1/forecast` - Get 7-day weather forecast
-
+- `GET /api/v1/crop-diseases` - Get all  crop-diseases pre-trained
 ## Usage
 
 The API expects JSON data in the request body for images and location coordinates. 
