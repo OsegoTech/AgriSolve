@@ -330,10 +330,11 @@ def confirm_transaction():
     supabase: Client = create_client(url, key)
     response = supabase.table('transactions').select('*').eq(
           'CheckoutRequestID', rqst_id).execute().data
-    if response:
-        msg = response[0]['ResultDesc']
-        break
-      time.sleep(1)
+    while True:
+        if response:
+            msg = response[0]['ResultDesc']
+            break
+        time.sleep(1)
     return jsonify({"message":msg})
   except requests.JSONDecodeError:
     return jsonify({"error": "Invalid Request"})
