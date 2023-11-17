@@ -2,9 +2,10 @@ import base64
 import requests 
 from dotenv import load_dotenv
 import os
-
+base64_string = ""
 load_dotenv()
 def image_to_base64():
+    global base64_string
     url = input("Enter image url: ")
     response = requests.get(url)
     image_bytes = response.content
@@ -13,11 +14,15 @@ def image_to_base64():
 
 
 def detect_crop_disease():
+    image_to_base64()
+    global base64_string
     url = "http://127.0.0.1:5000/api/v1/crop-disease-detection"
     r = requests.post(url,json = {"image":f"{base64_string}"})
     print(r.text.strip())
 
 def detect_pest_disease():
+    global base64_string
+    image_to_base64()
     url = "http://127.0.0.1:5000/api/v1/pest-classification"
     r = requests.post(url, json = {"image":f"{base64_string}"})
     print(r.text)
@@ -70,4 +75,4 @@ def send_message():
     url = "http://127.0.0.1:5000/api/v1/messaging"
     resp = requests.post(url,json={'phone':'+254702716555'}).content
     print(resp)
-send_message()
+detect_pest_disease()
