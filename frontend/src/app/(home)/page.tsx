@@ -5,7 +5,7 @@ import 'swiper/css'
 import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import { ProductCard, ShopProductCard } from '@/components/cards/ProductCard'
+import { ShopProductCard } from '@/components/cards/ProductCard'
 import { Button, buttonVariants } from '@/components/ui/button'
 
 export default function Home() {
