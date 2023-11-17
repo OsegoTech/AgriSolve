@@ -320,18 +320,17 @@ def confirm_transaction():
   #confirm transaction
   try:
     #creds to supabase
-    msg = ""
+    msg = "Confirmation not yet received"
     url = os.getenv('MPESA_URL')
     key = os.getenv('MPESA_KEY')
     
     rqst_id = request.get_json()['rqst_id']
   
     print("request id: ",rqst_id)
-    while True:
-      supabase: Client = create_client(url, key)
-      response = supabase.table('transactions').select('*').eq(
+    supabase: Client = create_client(url, key)
+    response = supabase.table('transactions').select('*').eq(
           'CheckoutRequestID', rqst_id).execute().data
-      if response:
+    if response:
         msg = response[0]['ResultDesc']
         break
       time.sleep(1)
