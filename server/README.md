@@ -9,6 +9,7 @@ The Authenticati
 - [Usage](#usage)
 - [Endpoints](#endpoints)
   - [User Authentication](#user-authentication)
+  - [Refresh Access Token](#refresh-token)
   - [User Profile](#user-profile)
   - [Update User](#update-user)
   - [Update Password](#update-password)
@@ -55,11 +56,8 @@ pnpm start
   ```json
   {
     "name": "John Doe",
-    "username": "john_doe",
-    "password": "your_password",
     "email": "john.doe@example.com",
-    "phoneNumber": "1234567890",
-    "location": "City, Country"
+    "password": "your_password"
   }
   ```
 - **Response:**
@@ -76,7 +74,7 @@ pnpm start
 - **Request Body:**
   ```json
   {
-    "username": "john_doe",
+    "email": "john.doe@example.com",
     "password": "your_password"
   }
   ```
@@ -103,7 +101,53 @@ pnpm start
   }
   ```
 
+#### Refresh Tokens
+- **Endpoint:** `POST /api/v1/rerfresh-token
+- - **Description:** Refresh the access token using refresh token.
+- **Request Header:**
+   ```
+  Authorization: Bearer your_access_token
+  ```
+### Body Parameters
+
+- `refreshToken` (string, required): The refresh token obtained during the initial authentication.
+
+- **Request Body:**
+  ```json
+  {
+     "refreshToken": "your_refresh_token_here"
+  }
+  ```
+  - **Response:**
+  ```json
+  {
+     "accessToken": "new_access_token_here"
+  }
+  ```
+
 ### User Profile
+
+#### Add Profile
+- **Endpoint:** `POST /api/v1/profile`
+- **Description:** Add user information.
+- **Request Header:**
+  ```
+  Authorization: Bearer your_access_token
+  ```
+- **Request Body:**
+  ```json
+  {
+    "phoneNumber": "9876543210",
+    "location": "New City, New Country"
+  }
+  ```
+  - **Response:**
+  ```json
+  {
+    "message": "User profile successfully"
+  }
+  ```
+  
 
 #### Update User
 
@@ -117,7 +161,6 @@ pnpm start
   ```json
   {
     "name": "New Name",
-    "username": "new_username",
     "email": "new.email@example.com",
     "phoneNumber": "9876543210",
     "location": "New City, New Country"
@@ -129,7 +172,6 @@ pnpm start
     "message": "User updated successfully",
     "user": {
       "name": "New Name",
-      "username": "new_username",
       "email": "new.email@example.com",
       "phoneNumber": "9876543210",
       "location": "New City, New Country"
