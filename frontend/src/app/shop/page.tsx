@@ -3,64 +3,24 @@ import { IoReload } from 'react-icons/io5'
 import { TfiShoppingCart } from 'react-icons/tfi'
 import { RiSecurePaymentLine } from 'react-icons/ri'
 import { GoTrophy } from 'react-icons/go'
-import { ProductCard } from '@/components/cards/ProductCard'
+import { ShopProductCard } from '@/components/cards/ProductCard'
+
+const productCategories = [
+  'Cereals',
+  'Fruits',
+  'Vegetables',
+  'Meats',
+  'Flowers',
+]
 
 export default function Page() {
   return (
     <div className='px-4 lg:px-72 space-y-8 min-h-screen py-8 pb-20 bg-neutral-50 font-primary dark:bg-slate-800'>
       <MarketingStrip />
 
-      <div className='space-y-4'>
-        <h3 className='scroll-m-20   text-2xl font-semibold tracking-tight'>
-          Coffee
-        </h3>
-
-        <div className='flex flex-col gap-4 items-center md:flex-row'>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
-      </div>
-
-      <div className='space-y-4'>
-        <h3 className='scroll-m-20   text-2xl font-semibold tracking-tight'>
-          Coffee
-        </h3>
-
-        <div className='flex flex-col gap-4 items-center md:flex-row'>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
-      </div>
-
-      <div className='space-y-4'>
-        <h3 className='scroll-m-20   text-2xl font-semibold tracking-tight'>
-          Coffee
-        </h3>
-
-        <div className='flex flex-col gap-4 items-center md:flex-row'>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
-      </div>
-
-      <div className='space-y-4'>
-        <h3 className='scroll-m-20   text-2xl font-semibold tracking-tight'>
-          Coffee
-        </h3>
-
-        <div className='flex gap-4 flex-col items-center md:flex-row'>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
-      </div>
+      {productCategories.map((category) => (
+        <ProductCategory key={category} categoryName={category} />
+      ))}
     </div>
   )
 }
@@ -142,5 +102,22 @@ const MarketingStrip = () => {
         </div>
       </div>
     </>
+  )
+}
+
+const ProductCategory = ({ categoryName }: { categoryName: string }) => {
+  return (
+    <div className='space-y-4'>
+      <h3 className='scroll-m-20   text-2xl font-semibold tracking-tight'>
+        {categoryName}
+      </h3>
+
+      <div className='grid md:grid-cols-2 lg:grid-cols-4 place-items-center gap-4  md:flex-row'>
+        <ShopProductCard className='col-span-1' />
+        <ShopProductCard className='col-span-1' />
+        <ShopProductCard className='col-span-1' />
+        <ShopProductCard className='col-span-1' />
+      </div>
+    </div>
   )
 }
