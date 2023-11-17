@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import connectDB from "./utils/DB.js";
 import productsRoute from "./routes/productsRoute.js";
+import userRoutes from "./routes/userRoutes.js"
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", productsRoute);
+app.use("/api/users", userRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
