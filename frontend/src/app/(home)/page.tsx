@@ -5,7 +5,7 @@ import 'swiper/css'
 import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import { ProductCard } from '@/components/cards/ProductCard'
+import { ShopProductCard } from '@/components/cards/ProductCard'
 import { Button, buttonVariants } from '@/components/ui/button'
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
             Get Started
           </Link>
           <Link
-            href={'/'}
+            href={'/shop'}
             target='_blank'
             rel='noreferrer'
             className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
@@ -39,19 +39,19 @@ export default function Home() {
 
       <div className='mt-8'>
         <div className='md:w-[65%] mx-auto space-y-8 p-3'>
-          <div className='flex items-center justify-center space-x-2 cursor-pointer select-none hover:opacity-70'>
-            <Link href='/shop' className='text-start font-semibold'>View top products in marketplace</Link>
+          <div className='flex items-center justify-center space-x-2 cursor-pointer select-none hover:opacity-70 hover:text-primary'>
+            <Link href='/shop' className='text-start font-semibold'>View more top products in marketplace</Link>
             <MdOutlineKeyboardDoubleArrowRight size={19} />
           </div>
 
           <div className='grid place-items-center gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            <ProductCard />
+            <ShopProductCard />
 
-            <ProductCard />
+            <ShopProductCard />
 
-            <ProductCard />
+            <ShopProductCard />
 
-            <ProductCard />
+            <ShopProductCard />
           </div>
         </div>
 
@@ -79,7 +79,7 @@ export default function Home() {
                 helps you to plan your farming activities and also helps you to
                 know when to plant and when not to plant.
               </p>
-              <Button>Get Started</Button>
+              <Button variant='secondary'>Get Started</Button>
             </div>
           </div>
 
@@ -102,7 +102,7 @@ export default function Home() {
                 provide you with a database of crop diseases and their
                 solutions. Improve your crop yield with our Ai.
               </p>
-              <Button>Get Started</Button>
+              <Button variant='secondary'>Get Started</Button>
             </div>
           </div>
         </div>

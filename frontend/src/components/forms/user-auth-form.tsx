@@ -103,7 +103,7 @@ export function UserSignInAuthForm({ className, ...props }: UserAuthFormProps) {
 
           <button className={cn(buttonVariants())} disabled={isLoading}>
             {isLoading && <p>Loading ....</p>}
-            Sign In with Email
+            Sign In
           </button>
         </div>
       </form>
