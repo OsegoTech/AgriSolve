@@ -8,14 +8,9 @@ import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 
 export function ProductCard() {
   return (
@@ -106,48 +101,49 @@ export function ShopProductCard({ className }: { className?: string }) {
         </CardFooter>
       </Card>
 
-      <DialogContent className='sm:max-w-[425px]'>
-       <Image
+      <DialogContent className='py-12 h-full md:h-fit overflow-y-auto sm:max-w-[700px]'>
+        <DialogHeader className='flex md:flex-row gap-4'>
+          <Image
             draggable={false}
             src='https://picsum.photos/400'
             alt='Product Image'
-            className='object-cover transition-all mx-auto rounded-md w-auto h-auto '
+            className='object-cover transition-all col-span-2 rounded-md w-auto h-auto '
             width={200}
             height={200}
             priority
           />
 
-        <DialogHeader>
-          <DialogTitle className='line-clamp-1 capitalize'>Coffe name that is very long that can wrap to the next line</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DialogDescription>
+          <div className='col-span-2 flex flex-col p-3 border rounded-md'>
+            <p className='scroll-m-20 text-start font-medium capitalize tracking-tight text-lg leading-tight'>
+              Coffe name that is very long that can wrap to the next line
+            </p>
+
+            <div className='flex-1 mt-4'>
+              <p className='text-lg font-medium '>Price: $100</p>
+              <p>Rating: 4.5</p>
+              <p>Stock: 34</p>
+            </div>
+
+            <Button type='button' className='mt-3 md:mt-0 md:ml-auto'>
+              Add to cart
+            </Button>
+          </div>
         </DialogHeader>
-        <div className='grid gap-4 py-4'>
-          <div className='grid grid-cols-4 items-center gap-4'>
-            <Label htmlFor='name' className='text-right'>
-              Name
-            </Label>
-            <Input
-              id='name'
-              defaultValue='Pedro Duarte'
-              className='col-span-3'
-            />
-          </div>
-          <div className='grid grid-cols-4 items-center gap-4'>
-            <Label htmlFor='username' className='text-right'>
-              Username
-            </Label>
-            <Input
-              id='username'
-              defaultValue='@peduarte'
-              className='col-span-3'
-            />
-          </div>
+
+        <div>
+          <p className='scroll-m-20 font-medium tracking-tight text-gray-700'>
+            Description:
+          </p>
+          <p className='text-gray-500 text-sm h-[150px] bg-slate-50 border p-2 mt-2 overflow-y-auto rounded-md'>
+            This is a product description that can be some long text.This is a
+            product descriptin that can be some long text. This is a product
+            description that can be some long text.This is a product descriptin
+            that can be some long text. This is a product description that can
+            be some long text.This is a product descriptin that can be some long
+            text. This is a product description that can be some long text.This
+            is a product descriptin that can be some long text.
+          </p>
         </div>
-        <DialogFooter>
-          <Button type='submit'>Save changes</Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   )

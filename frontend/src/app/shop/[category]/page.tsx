@@ -1,28 +1,53 @@
+'use client'
+
 import Image from 'next/image'
 import { IoReload } from 'react-icons/io5'
 import { TfiShoppingCart } from 'react-icons/tfi'
 import { RiSecurePaymentLine } from 'react-icons/ri'
 import { GoTrophy } from 'react-icons/go'
 import { ShopProductCard } from '@/components/cards/ProductCard'
-import { MdKeyboardDoubleArrowRight } from 'react-icons/md'
+import { Button, buttonVariants } from '@/components/ui/button'
+import {useEffect} from 'react'
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
 
-const productCategories = [
-  'Cereals',
-  'Fruits',
-  'Vegetables',
-  'Meats',
-  'Flowers',
+const products = [
+  'apple',
+  'banana',
+  'blueberry',
+  'grapes',
+  'pineapple',
+  'strawberry',
+  'watermelon',
+  'orange',
+  'lemon',
+  'mango',
+  'kiwi',
+  'avocado',
+  'peach',
+  'cherry',
+  'coconut',
+  'pear',
+  'papaya',
+  'figs',
+  'plum',
+  'pomegranate',
+  'lychee',
+  'date',
+  'dragonfruit',
+  'guava',
+  'jackfruit',
+  'passionfruit',
+  'persimmon',
 ]
 
-export default function Page() {
+export default function Page({params}:{params:{category:string}}) {
+
   return (
     <div className='px-4 lg:px-72 space-y-8 min-h-screen py-8 pb-20 bg-neutral-50 font-primary dark:bg-slate-800'>
       <MarketingStrip />
 
-      {productCategories.map((category) => (
-        <ProductCategory key={category} categoryName={category} />
-      ))}
+      <ProductCategory categoryName={params.category} products={products} />
     </div>
   )
 }
@@ -107,26 +132,31 @@ const MarketingStrip = () => {
   )
 }
 
-const ProductCategory = ({ categoryName }: { categoryName: string }) => {
+const ProductCategory = ({
+  categoryName,
+  products,
+}: {
+  categoryName: string
+  products: string[]
+}) => {
   return (
-    <div className='flex flex-col space-y-4'>
-      <div className='flex justify-between items-center bg-white border p-2 rounded-md'>
-        <p className='text-2xl font-semibold tracking-tight'>{categoryName}</p>
-
+    <div className='space-y-4'>
+      <div className='flex items-center justify-between bg-white border p-2 rounded-md dark:bg-state-900'>
+        <p className='scroll-m-20 capitalize text-2xl font-semibold tracking-tight'>
+          {categoryName}
+        </p>
         <Link
-          href={`/shop/${categoryName.toLowerCase()}`}
-          className='flex items-center text-gray-500 hover:text-primary dark:text-gray-300'
+          href='/shop'
+          className={cn(buttonVariants({ variant: 'outline' }))}
         >
-          <p className='text-sm font-medium'>View more</p>
-          <MdKeyboardDoubleArrowRight size={22} className='inline-block' />
+          Back
         </Link>
       </div>
 
       <div className='grid md:grid-cols-2 lg:grid-cols-4 place-items-center gap-4  md:flex-row'>
-        <ShopProductCard className='col-span-1' />
-        <ShopProductCard className='col-span-1' />
-        <ShopProductCard className='col-span-1' />
-        <ShopProductCard className='col-span-1' />
+        {products.map((product) => (
+          <ShopProductCard key={product} className='col-span-1' />
+        ))}
       </div>
     </div>
   )
