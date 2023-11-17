@@ -288,7 +288,9 @@ def mpesa_stkpush():
   key = os.getenv('MPESA_KEY')
   secret = os.getenv('MPESA_SECRET')
   url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+  print(requests.get(url,auth=HTTPBasicAuth(key, secret)))
   access_token = requests.get(url,auth=HTTPBasicAuth(key, secret)).json()['access_token']
+  
   
   #send stk push
   try:
@@ -320,21 +322,21 @@ def confirm_transaction():
   #confirm transaction
   try:
     #creds to supabase
-    msg = ""
-    url = os.getenv('MPESA_URL')
-    key = os.getenv('MPESA_KEY')
+    msg = "Confirmation not yet received"
+    url = os.getenv('SUPABASE_URL')
+    key = os.getenv('SUPABASE_KEY')
     
     rqst_id = request.get_json()['rqst_id']
   
     print("request id: ",rqst_id)
-    while True:
-      supabase: Client = create_client(url, key)
-      response = supabase.table('transactions').select('*').eq(
+    supabase: Client = create_client(url, key)
+    response = supabase.table('transactions').select('*').eq(
           'CheckoutRequestID', rqst_id).execute().data
-      if response:
-        msg = response[0]['ResultDesc']
-        break
-      time.sleep(1)
+    while True:
+        if response:
+            msg = response[0]['ResultDesc']
+            break
+        time.sleep(1)
     return jsonify({"message":msg})
   except requests.JSONDecodeError:
     return jsonify({"error": "Invalid Request"})
