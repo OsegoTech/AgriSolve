@@ -24,15 +24,16 @@ export default function HomeNav() {
           <CiShop />
           <span>Shop</span>
         </Link>
-        <li className='cursor-pointer flex items-center gap-1 hover:underline underline-offset-2'>
+
+        <Link href='/forecast' className='cursor-pointer flex items-center gap-1 hover:underline underline-offset-2'>
           <TiWeatherPartlySunny />
           <span>Forecasts</span>
-        </li>
+        </Link>
 
-        <li className='cursor-pointer flex items-center gap-1 hover:underline underline-offset-2'>
+        <Link href="/disease-ai" className='cursor-pointer flex items-center gap-1 hover:underline underline-offset-2'>
           <FaDisease />
           <span>Diseases</span>
-        </li>
+        </Link>
       </ul>
 
       <ul className='flex space-x-2 text-sm'>

@@ -4,6 +4,8 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import {  UserSignInAuthForm } from "@/components/forms/user-auth-form"
+import { MdKeyboardDoubleArrowRight, MdOutlineArrowBack } from "react-icons/md";
+
 
 export const metadata: Metadata = {
   title: "Login",
@@ -16,12 +18,12 @@ export default function LoginPage() {
       <Link
         href="/"
         className={cn(
-          buttonVariants({ variant: "ghost" }),
+          buttonVariants({ variant: "secondary" }),
           "absolute left-4 top-4 md:left-8 md:top-8"
         )}
       >
         <>
-
+        <MdOutlineArrowBack size={18} className="inline-block mr-2" />
           Back
         </>
       </Link>

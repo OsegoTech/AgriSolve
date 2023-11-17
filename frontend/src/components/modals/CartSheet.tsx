@@ -52,9 +52,9 @@ export function CartSheet({ button }: { button: React.ReactNode }) {
 
             <Separator />
 
-            <div className='flex justify-between w-full text-sm text-primary '>
+            <div className='flex justify-between w-full text-sm font-medium'>
               <p>Subtotal</p>
-              <p>$ 29.99</p>
+              <p className='text-primary font-semibold'>$ 29.99</p>
             </div>
 
             <Separator />
