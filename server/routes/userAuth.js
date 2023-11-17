@@ -14,6 +14,9 @@ router.post("/login", userAuthController.loginUser)
 //Route for refreshing access tokens
 router.post('/refresh-token', userAuthController.refreshAccessToken)
 
+//Profile
+router.post('/profile', verifyToken, updateUserController.addProfile)
+
 //Update user
 router.put('/update_user', verifyToken, updateUserController.updateUser)
 

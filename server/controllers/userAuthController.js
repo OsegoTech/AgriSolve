@@ -7,7 +7,7 @@ const User = require("../models/userAuthModel");
 const generateAccessToken = (userId) => {
     const payload = { userId };
     const secretKey = process.env.JWT
-    const options = { expiresIn: '1d' };
+    const options = { expiresIn: '10m' };
     return jwt.sign(payload, secretKey, options);
 }
 
@@ -24,14 +24,14 @@ const blacklistedTokens = [] //Array to store blacklisted tokens
 module.exports = {
     // Register User
     registerUser: async(req, res) => {
-        const { name, username, password, email, phoneNumber, location } = req.body
+        const { name, email, password } = req.body
 
         try{
             //Check if the username exists
-            const existingUser = await User.findOne({ username })
-            if (!username || !password ) return res.status(400).json({"message" : "Username and Password required"})
-            if (existingUser) {
-                return res.status(400).json( {error: "Username already taken."})
+            const existingEmail = await User.findOne({ email })
+            if (!name || !password ) return res.status(400).json({"message" : "Name and Password required"})
+            if (existingEmail) {
+                return res.status(400).json( {error: "Email already taken."})
             }   
     
             //Hash the password
@@ -39,11 +39,8 @@ module.exports = {
             //Create a new User
             const newUser = new User({ 
                 name, 
-                username, 
-                password: hashedPassword,
                 email,
-                phoneNumber,
-                location
+                password: hashedPassword,
             })
             await newUser.save()
             
@@ -54,13 +51,13 @@ module.exports = {
         }
     },
     loginUser: async(req, res) => {
-        const { username, password } = req.body
+        const { email, password } = req.body
     
         try{
             //Find if user has been registered
-            const user = await User.findOne({ username })
+            const user = await User.findOne({ email })
             if (!user) {
-                return res.status(401).json({ error: "Invalid username"})
+                return res.status(401).json({ error: "Invalid email"})
             }
     
             //Compare the passowrd
