@@ -91,6 +91,16 @@ def detect_crop():
             
             diseases.append(disease)
         return {"diseases":diseases}
+#crop diseases
+@app.get('/api/v1/crop-diseases')
+@cross_origin()
+def crop_diseases():
+    diseases = ""
+    with open('diseases.json','r') as file:
+        diseases = json.load(file)
+
+    return diseases
+
 
 #pest detection route
 #scrape pest details
@@ -281,6 +291,7 @@ def send_stk_push(phone: str, amount: int,token:str)->str:
     return "Error"
 
 @app.route('/api/v1/mpesa/stk_push', methods=['POST'])
+@cross_origin()
 def mpesa_stkpush():
   data = request.get_json()
   
@@ -300,6 +311,7 @@ def mpesa_stkpush():
     return jsonify({"error": "Invalid Request"})
 
 @app.route('/mpesa-callback', methods=['POST', 'OPTIONS'])
+@cross_origin()
 def receive_mpesa():
   data = json.loads(request.get_data().decode('utf8'))
   #creds to supabase
@@ -311,6 +323,7 @@ def receive_mpesa():
   return jsonify(data)
 
 @app.post('/api/v1/mpesa/confirm_transaction')
+@cross_origin()
 def confirm_transaction():
   """
   {

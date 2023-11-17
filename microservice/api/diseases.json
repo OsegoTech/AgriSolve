@@ -1,0 +1,122 @@
+[
+    {
+        "NAME": "Rust",
+        "IMAGE": "https://imgs.search.brave.com/z3vFAP4lHFzmnB_RSNb1kjV6WtWXZSZ09AMI0qCPxA8/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/cGxhbmV0bmF0dXJh/bC5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTIvMTIvY29t/bW9uLXJ1c3QtZGlz/ZWFzZS5qcGc",
+        "DESCRIPTON": "A fungal disease that appears as reddish-brown or orange powdery pustules on leaves, stems, and grains of crops like wheat, barley, and corn.\n",
+        "SOLUTIONS": "Plant resistant varieties, practice crop rotation, apply fungicides when necessary, and maintain good plant hygiene by removing infected plant debris."
+    },
+    {
+        "NAME": "Blight",
+        "IMAGE": "https://imgs.search.brave.com/3xs0wD4IEoarYQdPXLhNH95Ulatq7ko0peuBvBylejI/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi90b21h/dG8tZGlzZWFzZS10/cmVhdG1lbnQtZHlp/bmctcGxhbnQtcmVk/LXRvbWF0b2VzLWlu/ZmVjdGVkLWxhdGUt/YmxpZ2h0LTIxNTg1/NzI2MC5qcGc",
+        "DESCRIPTON": "A general term for diseases caused by bacteria, fungi, or oomycetes, leading to wilting, browning, and death of plant tissues. Examples include potato blight and fire blight in fruit trees.",
+        "SOLUTIONS": "Use disease-resistant varieties, practice crop rotation, ensure proper plant spacing for air circulation, and apply fungicides if needed."
+    },
+    {
+        "NAME": "Mildew",
+        "IMAGE": "https://imgs.search.brave.com/nFhhsg9a6UziYq5ePV2ecS20UiI8bjJ8NUVyYfD_j5U/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/cGxhbmV0bmF0dXJh/bC5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTIvMTIvcGxh/bnQtZGlzZWFzZS1t/aWxkZXcuanBn",
+        "DESCRIPTON": "A fungal disease characterized by white or gray powdery coating on leaves, stems, and fruits of plants like grapes, cucumbers, and peas.",
+        "SOLUTIONS": "Improve air circulation, avoid overhead irrigation, provide adequate plant spacing, apply fungicides, and remove infected plant parts."
+    },
+    {
+        "NAME": "Fusarium wilt",
+        "IMAGE": "https://imgs.search.brave.com/zBiqD9jh-0chdknnyJjnKgV84fsxPEMmtdgHYTXKPDo/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/cGxhbmV0bmF0dXJh/bC5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTIvMTIvZnVz/YXJpdW0td2lsdC10/b21hdG8uanBn",
+        "DESCRIPTON": "A soil-borne fungal disease causing wilting, yellowing, and death of plants such as tomatoes, bananas, and cotton.",
+        "SOLUTIONS": "Plant resistant varieties, practice crop rotation, ensure proper drainage, and use soil solarization or fumigation if necessary."
+    },
+    {
+        "NAME": "Verticillium wilt",
+        "IMAGE": "https://imgs.search.brave.com/trs1zBbZTLBYEPDrFu1LBBJEP52FCBE9ObWOvk2pKCk/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jb250/ZW50LmNlcy5uY3N1/LmVkdS9tZWRpYS9p/bWFnZXMvMl9pbXMx/TGhFLmpwZWc",
+        "DESCRIPTON": "A fungal disease that causes wilting, yellowing, and stunted growth in crops like tomatoes, potatoes, and strawberries.",
+        "SOLUTIONS": "Use resistant varieties, practice crop rotation, maintain proper soil fertility and moisture, and manage weed hosts."
+    },
+    {
+        "NAME": "Downy mildew",
+        "IMAGE": "https://imgs.search.brave.com/E1qYR9_eV1hhvhGaNs-2T5lE67hcRLeo4rJ4mGDjD0M/rs:fit:500:0:0/g:ce/aHR0cHM6Ly8xNDk1/MjkwNDIudjIucHJl/c3NhYmxlY2RuLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/MC8wMS9jYWRtc3Bs/YXNoMS0yMDB4MjAw/LmpwZw",
+        "DESCRIPTON": "A disease characterized by yellowish-green patches on the upper leaf surface and fuzzy, purplish-gray growth on the lower surface. It affects crops such as grapes, lettuce, and cucumbers.",
+        "SOLUTIONS": "Improve air circulation, avoid overhead irrigation, apply fungicides preventatively, and remove infected plant material."
+    },
+    {
+        "NAME": "Phytophthora blight",
+        "IMAGE": "https://imgs.search.brave.com/_3IDJgGl7CWtAv2ohQlFqJ1uOXHRTehjvDjSjgwCht4/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/cGxhbmV0bmF0dXJh/bC5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTIvMTIvbGF0/ZS1ibGlnaHQtdG9t/YXRvLmpwZw",
+        "DESCRIPTON": "A disease caused by the oomycete Phytophthora capsici, leading to damping-off of seedlings, root and crown rot, and fruit rot in vegetables like peppers, cucumbers, and squash.",
+        "SOLUTIONS": "Practice crop rotation, avoid over-irrigation, improve soil drainage, use resistant varieties, and apply fungicides."
+    },
+    {
+        "NAME": "Powdery mildew",
+        "IMAGE": "https://imgs.search.brave.com/EXHgHycYd2CsN3n9Wn77ytWTZJExlGGHTDW-baxqd-w/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9nYXJk/ZW5lcnNwYXRoLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/Mi8wMy9Ib3ctdG8t/Q29tYmF0LVBvd2Rl/cnktTWlsZGV3LUZl/YXR1cmUuanBn",
+        "DESCRIPTON": "A fungal disease appearing as a white, powdery coating on leaves, stems, and flowers of plants like grapes, cucurbits, and roses.",
+        "SOLUTIONS": "Practice crop rotation, remove infected plant parts, use copper-based sprays or bactericides, and avoid overhead irrigation."
+    },
+    {
+        "NAME": "Bacterial spot",
+        "IMAGE": "https://imgs.search.brave.com/Y_K67PF6449vTD-U7lvGIxZzspUI872tguuexUINgqE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy83/LzczL0hpYmlzY3Vz/X0JhY3RlcmlhbF9s/ZWFmX3Nwb3RfY2F1/c2VkX2J5X1BzZXVk/b21vbmFzX2NpY2hv/cmlpXyg1Njg0NTc1/ODE4KS5qcGc",
+        "DESCRIPTON": "A disease causing dark, water-soaked lesions on leaves, stems, and fruits of crops including tomatoes, peppers, and peaches.",
+        "SOLUTIONS": "Practice crop rotation, remove infected plant parts, use copper-based sprays or bactericides, and avoid overhead irrigation."
+    },
+    {
+        "NAME": "Late blight",
+        "IMAGE": "https://imgs.search.brave.com/U2spX8aff350RIuuUfrYn3zIuGqPds5kLvQV2b3LVXE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jb250/ZW50LmNlcy5uY3N1/LmVkdS9tZWRpYS9p/bWFnZXMvU2hvZW1h/a2VyXzcwNjguSlBH",
+        "DESCRIPTON": "A devastating disease caused by the oomycete Phytophthora infestans, leading to dark, water-soaked lesions on leaves, stems, and fruits of potatoes and tomatoes.",
+        "SOLUTIONS": "Plant resistant varieties, practice good sanitation, apply fungicides preventatively, and remove infected plant material."
+    },
+    {
+        "NAME": "Stem rust",
+        "IMAGE": "https://imgs.search.brave.com/1dJ1xGjONtzJkIORXeHhuX6PgsSjJ8hM7C_CinawRwg/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWdyaWMud2EuZ292/LmF1L3NpdGVzL2dh/dGV3YXkvZmlsZXMv/c3R5bGVzL3BhZ2Vf/ZmVhdHVyZWRfaW1h/Z2UvcHVibGljL1N0/ZW0lMjBydXN0LkpQ/Rz9pdG9rPW0tdVJ5/bm9J",
+        "DESCRIPTON": "A fungal disease affecting cereal crops like wheat, barley, and rye, characterized by reddish-brown pustules on stems, leaves, and grains.",
+        "SOLUTIONS": "Plant resistant varieties, practice crop rotation, and apply fungicides if necessary."
+    },
+    {
+        "NAME": "Stripe rust",
+        "IMAGE": "https://imgs.search.brave.com/wxdoRydj8e0wTSnDP0ExXVtvvxSxqhPSuTDPAV8Mv_o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/Z292Lm1iLmNhL2Fn/cmljdWx0dXJlL2Ny/b3BzL3BsYW50LWRp/c2Vhc2VzL2ltYWdl/cy9mYWM2NXMwMGEu/anBn",
+        "DESCRIPTON": "A fungal disease causing yellow or orange stripes on leaves of cereals such as wheat and barley.",
+        "SOLUTIONS": "Use resistant varieties, monitor fields closely, and apply fungicides if needed.\n"
+    },
+    {
+        "NAME": "Fusarium head blight",
+        "IMAGE": "https://imgs.search.brave.com/7goFwsruJHuzV61eFRjoq3HimNxpFitsIl8gOJT5uEM/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMxLmZhcm1zLmNv/bS9mYXJtcy1wcm9k/dWN0aW9uLWltYWdl/cy9Qb3J0YWxzLzAv/ZnVzYXJpdW0taGVh/ZC1ibGlnaHQtMzAw/LTJfMS5wbmc",
+        "DESCRIPTON": "A fungal disease affecting small-grain cereals, characterized by shriveled grains and mycotoxin contamination.",
+        "SOLUTIONS": "Plant resistant varieties, practice crop rotation, apply fungicides during flowering, and maintain good plant hygiene."
+    },
+    {
+        "NAME": "Citrus canker",
+        "IMAGE": "https://imgs.search.brave.com/sG7YN8pOx7gIVJjGetT9IOt2FfJGZYN7bzFViAYGh0Q/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2RmYS5jYS5nb3Yv/Y2l0cnVzL2ltYWdl/cy9jY2RfdXNkYS5q/cGc",
+        "DESCRIPTON": "A bacterial disease causing raised corky lesions on leaves, fruits, and stems of citrus trees, leading to defoliation and reduced fruit quality.",
+        "SOLUTIONS": "Prune infected plant parts, apply copper-based sprays, practice good sanitation, and use disease-free planting material."
+    },
+    {
+        "NAME": "Anthracnose",
+        "IMAGE": "https://imgs.search.brave.com/j3FMso7oYmNAVDQeBW0M9WL5y3YeZtGw5ZsPe2oScZM/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9leHRl/bnNpb24ub2tzdGF0/ZS5lZHUvZmFjdC1z/aGVldHMvaW1hZ2Vz/L2FudGhyYWNub3Nl/LWFuZC1vdGhlci1j/b21tb24tbGVhZi1k/aXNlYXNlcy1vZi1k/ZWNpZHVvdXMtc2hh/ZGUtdHJlZXMvZmln/dXJlLTItMS5qcGc",
+        "DESCRIPTON": "A fungal disease causing dark, sunken lesions on leaves, stems, and fruits of various crops, leading to defoliation and fruit rot.",
+        "SOLUTIONS": "Practice good plant hygiene, apply fungicides preventatively, and remove infected plant material.\n"
+    },
+    {
+        "NAME": "Soybean rust",
+        "IMAGE": "https://imgs.search.brave.com/mxD6LbPNWhsqJyNV9tYwJm66u57Zqhi9mTGRFWMvPjk/rs:fit:500:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9m/L2Y4L1NveWJlYW5f/cnVzdC5qcGc",
+        "DESCRIPTON": "\u00a0A fungal disease affecting soybean crops, causing yellow-orange pustules on leaves, stems, and pods, leading to defoliation and yield reduction.",
+        "SOLUTIONS": "\u00a0Monitor fields for early signs, plant resistant varieties, apply fungicides preventatively, and practice good plant hygiene."
+    },
+    {
+        "NAME": "Sclerotinia rot",
+        "IMAGE": "https://imgs.search.brave.com/BWqP6PrGlV9JcZKrF7lAHauoxd2DsGFpvg1M-GK3xoY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2Fub2xhY291bmNp/bC5vcmcvd3AtY29u/dGVudC91cGxvYWRz/LzIwMjAvMDgvQS1z/Y2xlcm90aW5pYS1z/dGVtLXJvdC1sZXNp/b24tc3RhcnRzLW9u/LWEtY2Fub2xhLXN0/ZW0tNzY4eDEwMjQu/anBn",
+        "DESCRIPTON": "A fungal disease causing soft rot, wilting, and white cottony growth on infected plants like soybeans, sunflowers, and lettuce",
+        "SOLUTIONS": "Practice crop rotation, improve air circulation, remove infected plant material, and apply fungicides if necessary."
+    },
+    {
+        "NAME": "Bacterial wilt",
+        "IMAGE": "https://imgs.search.brave.com/zBiqD9jh-0chdknnyJjnKgV84fsxPEMmtdgHYTXKPDo/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/cGxhbmV0bmF0dXJh/bC5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTIvMTIvZnVz/YXJpdW0td2lsdC10/b21hdG8uanBn",
+        "DESCRIPTON": "A disease caused by bacteria like Ralstonia solanacearum, leading to wilting, yellowing, and death of crops such as tomatoes, peppers, and cucumbers.",
+        "SOLUTIONS": "Use disease-resistant varieties, practice crop rotation, and manage insect vectors. There are no effective chemical treatments for bacterial wilt.\n"
+    },
+    {
+        "NAME": "Rice blast",
+        "IMAGE": "https://imgs.search.brave.com/v7j-cOu_L8Is-7xQWrKCCsVD5_m4JgOSf26uA55pDeI/rs:fit:500:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2IwL1JpY2VfYmxh/c3Rfc3ltcHRvbXMu/anBn",
+        "DESCRIPTON": "A fungal disease affecting rice crops, characterized by grayish or whitish lesions with dark borders on leaves, stems, and grains.",
+        "SOLUTIONS": "Plant resistant varieties, apply fungicides during critical stages, practice good water management, and remove infected plant material."
+    },
+    {
+        "NAME": "Blackleg",
+        "IMAGE": "https://imgs.search.brave.com/WhTSLEFZQUmgDVkVOlEcKsvLll-_ZZul--dMQ96iBMU/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2Fub2xhY291bmNp/bC5vcmcvd3AtY29u/dGVudC91cGxvYWRz/LzIwMjAvMDcvQ2Fu/b2xhLXN0ZW1zLXdp/dGgtdmVydGljaWxs/aXVtLXN0cmlwZS1s/ZWZ0LWJsYWNrbGVn/LW1pZGRsZS1hbmQt/aGVhbHRoeS0xMDI0/eDc2OC5qcGc",
+        "DESCRIPTON": "A bacterial disease causing dark, sunken lesions on the stems of Brassica crops like cabbage, broccoli, and canola, leading to wilting and plant death.",
+        "SOLUTIONS": "Use disease-free planting material, practice crop rotation, and remove infected plant debris."
+    }
+]
