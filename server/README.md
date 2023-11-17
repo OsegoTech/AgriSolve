@@ -9,6 +9,7 @@ The Authenticati
 - [Usage](#usage)
 - [Endpoints](#endpoints)
   - [User Authentication](#user-authentication)
+  - [Refresh Access Token](#refresh-token)
   - [User Profile](#user-profile)
   - [Update User](#update-user)
   - [Update Password](#update-password)
@@ -97,6 +98,30 @@ pnpm start
   ```json
   {
     "message": "Logged out successfully"
+  }
+  ```
+
+#### Refresh Tokens
+- **Endpoint:** `POST /api/v1/rerfresh-token
+- - **Description:** Refresh the access token using refresh token.
+- **Request Header:**
+   ```
+  Authorization: Bearer your_access_token
+  ```
+### Body Parameters
+
+- `refreshToken` (string, required): The refresh token obtained during the initial authentication.
+
+- **Request Body:**
+  ```json
+  {
+     "refreshToken": "your_refresh_token_here"
+  }
+  ```
+  - **Response:**
+  ```json
+  {
+     "accessToken": "new_access_token_here"
   }
   ```
 
