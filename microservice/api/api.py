@@ -288,7 +288,9 @@ def mpesa_stkpush():
   key = os.getenv('MPESA_KEY')
   secret = os.getenv('MPESA_SECRET')
   url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+  print(requests.get(url,auth=HTTPBasicAuth(key, secret)))
   access_token = requests.get(url,auth=HTTPBasicAuth(key, secret)).json()['access_token']
+  
   
   #send stk push
   try:
