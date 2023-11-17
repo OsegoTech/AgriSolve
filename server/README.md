@@ -55,11 +55,8 @@ pnpm start
   ```json
   {
     "name": "John Doe",
-    "username": "john_doe",
-    "password": "your_password",
     "email": "john.doe@example.com",
-    "phoneNumber": "1234567890",
-    "location": "City, Country"
+    "password": "your_password"
   }
   ```
 - **Response:**
@@ -76,7 +73,7 @@ pnpm start
 - **Request Body:**
   ```json
   {
-    "username": "john_doe",
+    "email": "john.doe@example.com",
     "password": "your_password"
   }
   ```
@@ -105,6 +102,28 @@ pnpm start
 
 ### User Profile
 
+#### Add Profile
+- **Endpoint:** `POST /api/v1/profile`
+- **Description:** Add user information.
+- **Request Header:**
+  ```
+  Authorization: Bearer your_access_token
+  ```
+- **Request Body:**
+  ```json
+  {
+    "phoneNumber": "9876543210",
+    "location": "New City, New Country"
+  }
+  ```
+  - **Response:**
+  ```json
+  {
+    "message": "User profile successfully"
+  }
+  ```
+  
+
 #### Update User
 
 - **Endpoint:** `PUT /api/v1/update_user`
@@ -117,7 +136,6 @@ pnpm start
   ```json
   {
     "name": "New Name",
-    "username": "new_username",
     "email": "new.email@example.com",
     "phoneNumber": "9876543210",
     "location": "New City, New Country"
@@ -129,7 +147,6 @@ pnpm start
     "message": "User updated successfully",
     "user": {
       "name": "New Name",
-      "username": "new_username",
       "email": "new.email@example.com",
       "phoneNumber": "9876543210",
       "location": "New City, New Country"
