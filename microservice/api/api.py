@@ -323,8 +323,8 @@ def confirm_transaction():
   try:
     #creds to supabase
     msg = "Confirmation not yet received"
-    url = os.getenv('MPESA_URL')
-    key = os.getenv('MPESA_KEY')
+    url = os.getenv('SUPABASE_URL')
+    key = os.getenv('SUPABASE_KEY')
     
     rqst_id = request.get_json()['rqst_id']
   
