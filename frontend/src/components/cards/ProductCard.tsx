@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
+
 export function ShopProductCard({ className }: { className?: string }) {
   return (
     <Dialog>
