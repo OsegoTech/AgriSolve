@@ -17,10 +17,10 @@ import base64
 import os 
 import time
 import json
-from twilio.rest import Client
+from twilio.rest import Client as tw_client
 from requests.auth import HTTPBasicAuth
 from datetime import datetime
-from supabase import create_client, Client
+from supabase import create_client,Client
 
 #SCRAPPING LOGIC
 import requests
@@ -355,7 +355,7 @@ Happy growing! 🌾
         """
     account_sid = os.getenv('account_sid')
     auth_token = os.getenv('auth_token')
-    client = Client(account_sid, auth_token)
+    client = tw_client(account_sid, auth_token)
 
     message = client.messages.create(
         messaging_service_sid=os.getenv('messaging_service_sid'),
