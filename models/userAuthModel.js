@@ -9,9 +9,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    name: {
-        type: String,
-        required: String
+    isFarmer: {
+        type: Boolean,
+        default: false
     },
     email: {
         type: String,
