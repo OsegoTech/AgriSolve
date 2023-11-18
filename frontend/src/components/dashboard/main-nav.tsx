@@ -1,6 +1,8 @@
-import Link from "next/link"
+import Link from 'next/link'
 
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils'
+import { IoHomeOutline } from 'react-icons/io5'
+import { MdOutlineShoppingCart } from 'react-icons/md'
 
 export function MainNav({
   className,
@@ -8,32 +10,23 @@ export function MainNav({
 }: React.HTMLAttributes<HTMLElement>) {
   return (
     <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6", className)}
+      className={cn('flex items-center space-x-4 lg:space-x-6', className)}
       {...props}
     >
       <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium transition-colors hover:text-primary"
+        href='/'
+        className='hidden  md:flex items-center gap-1 cursor-pointer hover:underline font-medium hover:text-primary underline-offset-4'
       >
-        Overview
+        <IoHomeOutline />
+        <span>Home</span>
       </Link>
+
       <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        href='/shop'
+        className='hidden md:flex items-center gap-1 cursor-pointer hover:underline font-medium hover:text-primary underline-offset-4'
       >
-        Customers
-      </Link>
-      <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Products
-      </Link>
-      <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Settings
+        <MdOutlineShoppingCart />
+        <span>Shop</span>
       </Link>
     </nav>
   )
