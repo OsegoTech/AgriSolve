@@ -14,6 +14,9 @@ import { Overview } from '@/components/dashboard/overview'
 import { RecentSales } from '@/components/dashboard/recent-sales'
 import { UserNav } from '@/components/dashboard/user-nav'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import DashProductCard from '@/components/dashboard/product-card'
+import { OrdersTable } from '@/components/dashboard/orders-table'
 
 export const metadata: Metadata = {
   title: 'Dashboard',
@@ -54,12 +57,10 @@ export default function DashboardPage() {
             <TabsList>
               <TabsTrigger value='overview'>Overview</TabsTrigger>
               <TabsTrigger value='market'>Market</TabsTrigger>
-              <TabsTrigger value='orders'>Orders</TabsTrigger>
             </TabsList>
 
             <OverviewTab />
             <MarketTab />
-            <OrdersTab />
           </Tabs>
         </div>
       </div>
@@ -198,21 +199,91 @@ const OverviewTab = () => {
   )
 }
 
+const products = [
+  {
+    productName: 'Wheat',
+    productPrice: '$24.99',
+    productImage: 'https://picsum.photos/200',
+    description:
+      'Whole wheat grains that can be milled to produce quality flour.',
+    isInStock: true,
+  },
+  {
+    productName: 'Milk',
+    productPrice: '$24.99',
+    productImage: 'https://picsum.photos/200',
+    description:
+      'Whole wheat grains that can be milled to produce quality flour.',
+    isInStock: true,
+  },
+  {
+    productName: 'Flour',
+    productPrice: '$24.99',
+    productImage: 'https://picsum.photos/200',
+    description:
+      'Whole wheat grains that can be milled to produce quality flour.',
+    isInStock: true,
+  },
+  {
+    productName: 'Wheat',
+    productPrice: '$24.99',
+    productImage: 'https://picsum.photos/200',
+    description:
+      'Whole wheat grains that can be milled to produce quality flour.',
+    isInStock: true,
+  },
+  {
+    productName: 'Milk',
+    productPrice: '$24.99',
+    productImage: 'https://picsum.photos/200',
+    description:
+      'Whole wheat grains that can be milled to produce quality flour.',
+    isInStock: true,
+  },
+  {
+    productName: 'Flour',
+    productPrice: '$24.99',
+    productImage: 'https://picsum.photos/200',
+    description:
+      'Whole wheat grains that can be milled to produce quality flour.',
+    isInStock: true,
+  },
+]
+
 const MarketTab = () => {
   return (
     <TabsContent value='market' className='space-y-4'>
-      <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
-        <div>Market</div>
-      </div>
-    </TabsContent>
-  )
-}
+      <div className='flex flex-col md:flex-col gap-4'>
+        <div className='p-2 shadow rounded-md bg-white h-[60%]'>
+          <div className='flex justify-between items-center bg-white'>
+            <h3 className='scroll-m-20 text-2xl font-semibold tracking-tight'>
+              My products
+            </h3>
+            <Button variant='outline'> Add Product </Button>
+          </div>
 
-const OrdersTab = () => {
-  return (
-    <TabsContent value='orders' className='space-y-4'>
-      <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
-        <p>Orders</p>
+          <div className='flex flex-col p-4 py-4 gap-4 mt-4 h-[90%] overflow-y-auto'>
+            {products.map((product) => {
+              return (
+                <DashProductCard
+                  isInStock={product.isInStock}
+                  productPrice={product.productPrice}
+                  productName={product.productName}
+                  productImage={product.productImage}
+                  description={product.description}
+                />
+              )
+            })}
+          </div>
+        </div>
+
+        <div className='shadow rounded-md p-4 bg-white h-[60%]'>
+          <h3 className='mb-4 scroll-m-20 text-2xl font-semibold tracking-tight'>
+            My pending Orders
+          </h3>
+
+          <OrdersTable/>
+        </div>
       </div>
     </TabsContent>
   )
