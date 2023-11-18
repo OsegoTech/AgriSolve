@@ -6,10 +6,11 @@ import { Label } from '@/components/ui/label'
 import { LuImage } from 'react-icons/lu'
 import { Button } from '@/components/ui/button'
 import { BsDatabaseCheck } from 'react-icons/bs'
-import { useEffect, useState } from 'react'
-import { predictDisease } from '@/apis/apis'
+import { useState } from 'react'
+import { predictDisease, predictPest } from '@/apis/apis'
 import { useToast } from '@/components/ui/use-toast'
 import { AiOutlineReload } from 'react-icons/ai'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 
 const diseases = [
   {
@@ -50,12 +51,27 @@ interface IDisease {
   }
 }
 
+interface IPest {
+  common_name: string[]
+  name: string
+  description: string
+  descriprion_url: string
+}
+
 export default function Page() {
   const [detectedDisease, setDetectedDisease] = useState<IDisease>()
+  const [detectedPest, setDetectedPest] = useState<IPest>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [selectedValue, setSelectedValue] = useState<'disease' | 'pest'>(
+    'disease'
+  )
 
   const [image, setImage] = useState<null | string>()
   const { toast } = useToast()
+
+  const handleRadioChange = (value: 'disease' | 'pest') => {
+    setSelectedValue(value)
+  }
 
   const getDisease = async () => {
     setIsLoading(true)
@@ -71,6 +87,24 @@ export default function Page() {
     const prediction = await predictDisease({ image })
 
     setDetectedDisease(prediction)
+    setIsLoading(false)
+  }
+
+  const getPestData = async () => {
+    setIsLoading(true)
+    if (!image) {
+      toast({
+        variant: 'destructive',
+        title: 'Uh oh! Something went wrong.',
+        description: 'Please upload an image first.',
+      })
+      return setIsLoading(false)
+    }
+
+    const prediction = await predictPest({ image })
+    console.log(prediction)
+
+    setDetectedPest(prediction)
     setIsLoading(false)
   }
 
@@ -120,8 +154,25 @@ export default function Page() {
               accept='.png,.jpeg,.jpg,.webp'
               onChange={handleImageChange}
             />
-            <Button onClick={getDisease}>Upload</Button>
+            <Button
+              onClick={selectedValue == 'disease' ? getDisease : getPestData}
+            >
+              Upload
+            </Button>
           </div>
+        </div>
+
+        <div className='mt-4'>
+          <RadioGroup value={selectedValue} onValueChange={handleRadioChange}>
+            <div className='flex items-center space-x-2'>
+              <RadioGroupItem value='disease' id='r1' />
+              <Label htmlFor='r1'>Disease</Label>
+            </div>
+            <div className='flex items-center space-x-2'>
+              <RadioGroupItem value='pest' id='r2' />
+              <Label htmlFor='r2'>Pest</Label>
+            </div>
+          </RadioGroup>
         </div>
 
         {isLoading && (
@@ -131,13 +182,28 @@ export default function Page() {
           </div>
         )}
 
-        <div className='mt-8 flex flex-col gap-2 text-xs text-gray-600 border p-2 rounded-md bg-slate-50 max-h-[150px] overflow-y-auto dark:bg-slate-800 dark:text-gray-300'>
-          <p>Name: {detectedDisease?.name}</p>
-          <p>Suggestions: {detectedDisease?.suggestions}</p>
-          <p>Treatment (Biological): {detectedDisease?.treatment.biological}</p>
-          <p>Treatment (Chemical): {detectedDisease?.treatment.chemical}</p>
-          <p>Prevention: {detectedDisease?.treatment.prevention}</p>
-        </div>
+        {selectedValue == 'disease' ? (
+          <div className='mt-8 flex flex-col gap-2 text-xs text-gray-600 border p-2 rounded-md bg-slate-50 max-h-[150px] overflow-y-auto dark:bg-slate-800 dark:text-gray-300'>
+            <p>Name: {detectedDisease?.name}</p>
+            <p>Suggestions: {detectedDisease?.suggestions}</p>
+            <p>
+              Treatment (Biological): {detectedDisease?.treatment.biological}
+            </p>
+            <p>Treatment (Chemical): {detectedDisease?.treatment.chemical}</p>
+            <p>Prevention: {detectedDisease?.treatment.prevention}</p>
+          </div>
+        ) : (
+          <div className='mt-8 flex flex-col gap-2 text-xs text-gray-600 border p-2 rounded-md bg-slate-50 max-h-[150px] overflow-y-auto dark:bg-slate-800 dark:text-gray-300'>
+            <p>Name: {detectedPest?.name}</p>
+            <p>
+            Common Names:{' '}
+            {detectedPest?.common_name.map((name) => (
+                        <span key={name} className='capitalize'>{name}</span>
+                        ))}
+            </p>
+            <p>Description: {detectedPest?.description}</p>
+          </div>
+        )}
 
         <p className='mt-8 text-xs text-gray-500'>
           Note: The image will be uploaded to our server and will be deleted

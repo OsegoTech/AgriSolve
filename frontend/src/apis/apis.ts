@@ -55,3 +55,15 @@ export const predictDisease = async ({ image }: { image: string }) => {
     console.log(err)
   }
 }
+
+export const predictPest = async ({ image }: { image: string }) => {
+  try {
+    const { data } = await usersApi.post('/pest-classification', {
+      image,
+    })
+
+    return data;
+  } catch (err) {
+    console.log(err)
+  }
+}
