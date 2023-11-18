@@ -2,7 +2,8 @@ import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
-import {  UserRegisterAuthForm } from '@/components/forms/user-auth-form'
+import { UserRegisterAuthForm } from '@/components/forms/user-auth-form'
+import Image from 'next/image'
 
 export const metadata = {
   title: 'Create an account',
@@ -21,7 +22,17 @@ export default function RegisterPage() {
       >
         Login
       </Link>
-      <div className='hidden h-full bg-muted lg:block' />
+      <div className='hidden h-full bg-muted lg:block'>
+        <Image
+          draggable={false}
+          src='https://picsum.photos/400'
+          alt='Product Image'
+          className='object-cover transition-all w-full h-auto '
+          width={150}
+          height={150}
+          priority
+        />
+      </div>
       <div className='lg:p-8'>
         <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
           <div className='flex flex-col space-y-2 text-center'>
@@ -32,7 +43,9 @@ export default function RegisterPage() {
               Enter your email below to create your account
             </p>
           </div>
+
           <UserRegisterAuthForm />
+
           <p className='px-8 text-center text-sm text-muted-foreground'>
             By clicking continue, you agree to our{' '}
             <Link
