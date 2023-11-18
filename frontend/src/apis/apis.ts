@@ -19,14 +19,11 @@ export const getCurrentWeather = async ({
       longitude: lon,
     })
 
-    return data;
+    return data
   } catch (err) {
     console.log(err)
   }
-
 }
-
-
 
 export const getForecastWeather = async ({
   lat,
@@ -41,7 +38,19 @@ export const getForecastWeather = async ({
       longitude: lon,
     })
 
-    return data;
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const predictDisease = async ({ image }: { image: string }) => {
+  try {
+    const { data } = await usersApi.post('/crop-disease-detection/detailed', {
+      image,
+    })
+
+    return data.diseases[0];
   } catch (err) {
     console.log(err)
   }
