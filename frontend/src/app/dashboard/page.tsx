@@ -174,17 +174,17 @@ const OverviewTab = () => {
         </Card>
       </div>
 
-      <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
+      <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7'>
         <Card className='col-span-4'>
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
-          <CardContent className='pl-2'>
+          <CardContent className='md:pl-2'>
             <Overview />
           </CardContent>
         </Card>
 
-        <Card className='col-span-3'>
+        <Card className='col-span-4 md:col-span-3'>
           <CardHeader>
             <CardTitle>Recent Sales</CardTitle>
             <CardDescription>You made 265 sales this month.</CardDescription>
@@ -253,8 +253,9 @@ const products = [
 const MarketTab = () => {
   return (
     <TabsContent value='market' className='space-y-4'>
-      <div className='flex flex-col md:flex-col gap-4'>
-        <div className='p-2 shadow rounded-md bg-white h-[60%]'>
+      <div className='flex flex-col md:flex-row gap-4'>
+
+        <div className='flex-1 p-2 shadow rounded-md bg-white h-[60%]'>
           <div className='flex justify-between items-center bg-white'>
             <h3 className='scroll-m-20 text-2xl font-semibold tracking-tight'>
               My products
@@ -262,7 +263,7 @@ const MarketTab = () => {
             <Button variant='outline'> Add Product </Button>
           </div>
 
-          <div className='flex flex-col p-4 py-4 gap-4 mt-4 h-[90%] overflow-y-auto'>
+          <div className='flex flex-col p-4 py-4 gap-4 mt-4 overflow-y-auto'>
             {products.map((product) => {
               return (
                 <DashProductCard
@@ -277,7 +278,7 @@ const MarketTab = () => {
           </div>
         </div>
 
-        <div className='shadow rounded-md p-4 bg-white h-[60%]'>
+        <div className='flex-1 shadow rounded-md p-4 bg-white h-[60%]'>
           <h3 className='mb-4 scroll-m-20 text-2xl font-semibold tracking-tight'>
             My pending Orders
           </h3>
