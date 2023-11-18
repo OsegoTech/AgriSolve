@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
-
+import { Checkbox } from "@/components/ui/checkbox"
 import { cn } from '@/lib/utils'
 import { userAuthSchema, userRegisterSchema } from '@/lib/validations/auth'
 import { buttonVariants } from '@/components/ui/button'
@@ -233,6 +233,16 @@ export function UserRegisterAuthForm({
                 {errors.confirmPassword.message}
               </p>
             )}
+          </div>
+
+          <div className='my-4 flex items-center space-x-2'>
+            <Checkbox id='farmer' />
+            <label
+              htmlFor='farmer'
+              className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+            >
+              Sign up as farmer <span className='text-gray-400 dark:text-gray-300'>(If you are a farmer)</span>
+            </label>
           </div>
 
           <button className={cn(buttonVariants())} disabled={isLoading}>
