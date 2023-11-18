@@ -22,7 +22,7 @@ export const blacklistedTokens = []; // Array to store blacklisted tokens
 
 // Register User
 export const registerUser = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, isFarmer } = req.body;
 
     try {
         // Check if the username exists
@@ -39,6 +39,7 @@ export const registerUser = async (req, res) => {
             name,
             email,
             password: hashedPassword,
+            isFarmer: isFarmer || false
         });
         await newUser.save();
 
